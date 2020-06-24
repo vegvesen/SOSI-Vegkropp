@@ -1,0 +1,1055 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command-line to run this workspace:
+#        "C:\Program Files\FME\fme.exe" "C:\Users\ingsko\OneDrive - Statens Vegvesen\_IArbeid\Standardisering\BA-nettverket\SOSIvegkropp\Data\E16Jevnaker\Grunnlagsdata\Laser\Utsnitt json(Norgeskart.no)2sosii.fmw"
+#              --SourceDataset_GEOJSON "C:\Users\ingsko\OneDrive - Statens Vegvesen\_IArbeid\Standardisering\BA-nettverket\SOSIvegkropp\Data\E16Jevnaker\Grunnlagsdata\Laser\utsnitt.json"
+#              --DestDataset_GDMMAPPERSOSI "C:\Users\ingsko\OneDrive - Statens Vegvesen\_IArbeid\Standardisering\BA-nettverket\SOSIvegkropp\Data\E16Jevnaker\Grunnlagsdata\Laser\utsnitt.sos"
+#    
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="3719 253"
+#!   DOC_TOP_LEFT="-50 -267.5"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19801"
+#!   FME_DOCUMENT_GUID="9ac67cf0-b131-4503-be11-2f87c6fe7d38"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2019.2.0.0 (20191105 - Build 19801 - WIN64)"
+#!   LAST_SAVE_DATE="2020-06-09T13:25:50"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="-181.252 31.2503"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="GEOJSON"
+#!   DATASET="$(SourceDataset_GEOJSON)"
+#!   KEYWORD="GEOJSON_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_type string fme_start_angle float fme_secondary_axis float multi_reader_type string multi_reader_id int fme_geometry string multi_reader_full_id int fme_primary_axis float fme_rotation float fme_text_size float fme_feature_type string fme_basename string fme_dataset string fme_color string fme_fill_color string fme_text_string string fme_sweep_angle float multi_reader_keyword string"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   GENERATE_FME_BUILD_NUM="19801"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="json file"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="MIME_TYPE"
+#!   VALUE="application/geo+json ADD_DISPOSITION"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the GeoJSON file(s) or type the GeoJSON URL"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a name for the GeoJSON file"
+#! />
+#! </DATASET>
+#! <DATASET
+#!   IS_SOURCE="false"
+#!   ROLE="WRITER"
+#!   FORMAT="GDMMAPPERSOSI"
+#!   DATASET="$(DestDataset_GDMMAPPERSOSI)"
+#!   KEYWORD="GDMMAPPERSOSI_1"
+#!   MULTI_GEOM_ALLOWED="true"
+#!   ATTR_MAX_LENGTH="254"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_primary_axis real64 fme_color char(50) fme_basename char(50) fme_type char(50) fme_text_size real64 fme_geometry char(50) fme_start_angle real64 fme_dataset char(50) fme_sweep_angle real64 fme_feature_type char(50) fme_rotation real64 fme_fill_color char(50) fme_secondary_axis real64 fme_text_string char(50)"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   GENERATE_FME_BUILD_NUM="19801"
+#!   COORDSYS=""
+#!   FANOUT_EXPRESSION=""
+#!   FANOUT_GROUP="NO"
+#! />
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="boolean"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real64"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(31,15)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real32"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int32"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="logical"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_line"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_polygon"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_text"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_ellipse"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_arc"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_rectangle"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_rounded_rectangle"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_raster"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_no_geom"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_collection"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_line"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_line"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_polygon"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_no_geom"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_line"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_area"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_text"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_rectangle"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_rounded_rectangle"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_arc"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_ellipse"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_raster"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_no_geom"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_no_geom"
+#!   FME_TYPE="TARGET_GEOMTYPE"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_point_cloud"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_line"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_line"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_no_geom"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_no_geom"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="GDMMAPPERSOSI"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="utsnitt"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="json_polygon"
+#!   POSITION="20 -124.5"
+#!   BOUNDING_RECT="20 -124.5 454 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="GEOJSON_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="id" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="measurement" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="style.fill.color" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="style.stroke.color" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="style.stroke.width" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="false"
+#!   NODE_NAME="utsnitt"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="true"
+#!   IDENTIFIER="3"
+#!   FEAT_GEOMTYPE="fme_area"
+#!   POSITION="3100 -124.5"
+#!   BOUNDING_RECT="3100 -124.5 454 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="GDMMAPPERSOSI_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   SCHEMA_ATTRIBUTE_SOURCE="1"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="id" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="measurement" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="style.fill.color" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="style.stroke.color" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="style.stroke.width" ATTR_TYPE="int32" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET 
+#!   NAME="GEOJSON_1"
+#!   OVERRIDE="-GEOJSON_1_DATASET"
+#!   DATASET="GEOJSON_1/utsnitt.json"
+#! />
+#! </READER_DATASETS>
+#! <WRITER_DATASETS>
+#! <DATASET 
+#!   NAME="GDMMAPPERSOSI_1"
+#!   OVERRIDE="-GDMMAPPERSOSI_1_DATASET"
+#!   DATASET="GDMMAPPERSOSI_1/utsnitt.sos"
+#! />
+#! </WRITER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI FILE_OR_URL SourceDataset_GEOJSON GeoJSON_Documents(*.json;*.geojson)|*.json;*.geojson|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files|* Source GeoJSON File or URL:"
+#!   DEFAULT_VALUE="$(FME_MF_DIR)utsnitt.json"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI FILENAME DestDataset_GDMMAPPERSOSI SOSI_Files(*.sos) Destination SOSI :"
+#!   DEFAULT_VALUE="$(FME_MF_DIR)utsnitt.sos"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="5"
+#!   NAME="Reader Feature Types"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-50 -14.5"
+#!   ORDER="500000000000000"
+#!   PALETTE_COLOR="Reader/Writers"
+#!   BOTTOM_RIGHT="589 -267.5"
+#!   BOUNDING_RECT="-50 -14.5 639 253"
+#!   STICKY="true"
+#!   COLOUR="0.83529411764705885,0.71764705882352942,0.58039215686274515,1"
+#!   CONTENTS="2 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="6"
+#!   NAME="Writer Feature Types"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="3035 -14.5"
+#!   ORDER="500000000000000"
+#!   PALETTE_COLOR="Reader/Writers"
+#!   BOTTOM_RIGHT="3669 -267.5"
+#!   BOUNDING_RECT="3035 -14.5 634 253"
+#!   STICKY="true"
+#!   COLOUR="0.83529411764705885,0.71764705882352942,0.58039215686274515,1"
+#!   CONTENTS="3 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="Reprojector"
+#!   VERSION="4"
+#!   POSITION="1598 -124.5"
+#!   BOUNDING_RECT="1598 -124.5 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19801"
+#! >
+#!     <OUTPUT_FEAT NAME="REPROJECTED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="measurement" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="style.fill.color" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="style.stroke.color" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="style.stroke.width" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="DEST" PARM_VALUE="EUREF89.NTM-10"/>
+#!     <XFORM_PARM PARM_NAME="INTERPOLATION_TYPE_NAME" PARM_VALUE="Nearest Neighbor"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RASTER_CELL_SIZE" PARM_VALUE="Preserve Cells"/>
+#!     <XFORM_PARM PARM_NAME="RASTER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RASTER_TOLERANCE" PARM_VALUE="0.0"/>
+#!     <XFORM_PARM PARM_NAME="SOURCE" PARM_VALUE="Read from feature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Reprojector"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 REPROJECTED"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! <ATTR_LINK
+#!   IDENTIFIER="327689"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="ao 0 2 REPROJECTED"
+#!   TARGET_PORT_DESC="2"
+#! />
+#! <ATTR_LINK
+#!   IDENTIFIER="196617"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="ao 0 4 REPROJECTED"
+#!   TARGET_PORT_DESC="4"
+#! />
+#! <ATTR_LINK
+#!   IDENTIFIER="65545"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="ao 0 3 REPROJECTED"
+#!   TARGET_PORT_DESC="3"
+#! />
+#! <ATTR_LINK
+#!   IDENTIFIER="131081"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="ao 0 0 REPROJECTED"
+#!   TARGET_PORT_DESC="0"
+#! />
+#! <ATTR_LINK
+#!   IDENTIFIER="262153"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="ao 0 1 REPROJECTED"
+#!   TARGET_PORT_DESC="1"
+#! />
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 37
+GUI IGNORE SourceDataset_GEOJSON_1,GEOJSON_IN_USE_SEARCH_ENVELOPE_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1,GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1,GEOJSON_IN_NETWORK_AUTHENTICATION_GEOJSON_1,DestDataset_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_TEMPPATH_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSI_CHARSET_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSIVERSION_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSIUNIT_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSI_OWNER_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSI_PRODUCEDBY_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSI_METADATALINK_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSI_VERTICALDATUM_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSI_OVERRIDE_SOURCESHEADPARAMS_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_SOSI_ADDITIONSFILE_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_USETYPEREGONWRITE_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNFEATURETYPES_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNATTRIBUTETYPES_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_USERDEFINEDTYPEREG_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_CONVERTARCTOVECTORS_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_STOREFMESURFACEASGDMPOINT_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_STORETOPOLOGY_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_IGNOREATTRIBUTENAMES_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_WRITETHEMECODE_GDMMAPPERSOSI_1,GDMMAPPERSOSI_OUT_GDMW_OBJTYPEFORGENERATEDCURVES_GDMMAPPERSOSI_1
+DEFAULT_MACRO SourceDataset_GEOJSON $(FME_MF_DIR)utsnitt.json
+GUI FILE_OR_URL SourceDataset_GEOJSON GeoJSON_Documents(*.json;*.geojson)|*.json;*.geojson|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files|* Source GeoJSON File or URL:
+DEFAULT_MACRO DestDataset_GDMMAPPERSOSI $(FME_MF_DIR)utsnitt.sos
+GUI FILENAME DestDataset_GDMMAPPERSOSI SOSI_Files(*.sos) Destination SOSI :
+INCLUDE [ if {{$(SourceDataset_GEOJSON)} == {}} { puts_real {Parameter 'SourceDataset_GEOJSON' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(DestDataset_GDMMAPPERSOSI)} == {}} { puts_real {Parameter 'DestDataset_GDMMAPPERSOSI' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! encoding="utf-8"
+#! WORKSPACE_VERSION 1
+# ============================================================================ 
+# 
+# This mapping file was generated by FME Workbench
+# on 06/09/20 for translation between GEOJSON and GDMMAPPERSOSI
+# 
+# This workspace was generated with FME build 19801
+#
+# You may edit this mapping file to customize its operation.  Comments are 
+# placed throughout to assist you. 
+# 
+# Modification History:
+# 
+#     Name              Date     Description
+#     ================= ======== =============================================
+# 
+# 
+# ============================================================================ 
+# ============================================================================ 
+# The following line defines the title presented to the user when this
+# mapping file is run through the FME GUI.  You may modify this
+# if a more meaningful title would be appropriate.
+GUI TITLE GEOJSON to GDMMAPPERSOSI Translation 
+# ============================================================================ 
+# The following line names the log file to which useful statistics about
+# the translation will be written.  This line can be uncommented and
+# updated if you do wish to keep these statistics.
+# LOG_FILENAME translation.log
+# LOG_APPEND NO
+# ============================================================================ 
+# The following line instructs the FME to log any features that do not
+# match any of the source feature patterns listed further down in
+# this file.  If you are modifying this mapping file, this will be
+# useful to describe to you exactly which features you are losing
+# during translation, if the statistics indicate that features are
+# not being correlated or grouped.  Uncorrelated features do not
+# match any source specification, ungrouped features do not have
+# any corresponding _DEF line. 
+# FME_DEBUG UNGROUPED UNCORRELATED
+# ============================================================================ 
+# The following two lines define the type of reader and writer to be
+# used for this translation.  If you want to translate your data
+# back into its original format, you may make a copy of this file
+# and switch the reader and writer types.  If you rerun the FME, you
+# will get your original data back again (together with any modifications
+# you made in the meantime).  Note that several formats are NOT
+# bi-directional (for example, GIF can only be used as a WRITER)
+# so a reverse translation may not always be possible.
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} GEOJSON
+MULTI_READER_KEYWORD{0} GEOJSON_1
+MULTI_READER_GEN_DIRECTIVES{0} FLATTEN_MODE,ALL_LEVELS,USE_BASENAME_AS_DEFAULT_FEATURE_TYPE,Yes,USE_SEARCH_ENVELOPE,NO,SEARCH_ENVELOPE_MINX,0,SEARCH_ENVELOPE_MINY,0,SEARCH_ENVELOPE_MAXX,0,SEARCH_ENVELOPE_MAXY,0,CLIP_TO_ENVELOPE,NO,SourceDataset,C:<backslash>Users<backslash>ingsko<backslash>OneDrive<space>-<space>Statens<space>Vegvesen<backslash>_IArbeid<backslash>Standardisering<backslash>BA-nettverket<backslash>SOSIvegkropp<backslash>Data<backslash>E16Jevnaker<backslash>Grunnlagsdata<backslash>Laser<backslash>utsnitt.json,FME_GEOMETRY_HANDLING,Enhanced
+WRITER_TYPE MULTI_WRITER
+MULTI_WRITER_DATASET_ORDER BY_ID
+MULTI_WRITER_FIRST_WRITER_ID 0
+MULTI_WRITER_TYPE{0} GDMMAPPERSOSI
+MULTI_WRITER_KEYWORD{0} GDMMAPPERSOSI_1
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "GEOJSON_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER GEOJSON GEOJSON_1
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_GEOJSON_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER GEOJSON GEOJSON_1
+DEFAULT_MACRO SourceDataset_GEOJSON_1 $(SourceDataset_GEOJSON)
+GUI FILE_OR_URL SourceDataset_GEOJSON_1 GeoJSON_Documents(*.json;*.geojson)|*.json;*.geojson|All_Files|* Source GeoJSON File or URL:
+DEFAULT_MACRO GEOJSON_IN_FLATTEN_MODE_GEOJSON_1 ALL_LEVELS
+GEOJSON_1_FLATTEN_MODE "$(GEOJSON_IN_FLATTEN_MODE_GEOJSON_1)"
+DEFAULT_MACRO GEOJSON_IN_EXPOSE_ATTRS_GROUP_GEOJSON_1 
+GEOJSON_1_EXPOSE_ATTRS_GROUP "$(GEOJSON_IN_EXPOSE_ATTRS_GROUP_GEOJSON_1)"
+DEFAULT_MACRO GEOJSON_IN_USE_BASENAME_AS_DEFAULT_FEATURE_TYPE_GEOJSON_1 Yes
+GEOJSON_1_USE_BASENAME_AS_DEFAULT_FEATURE_TYPE "$(GEOJSON_IN_USE_BASENAME_AS_DEFAULT_FEATURE_TYPE_GEOJSON_1)"
+# Include this file in source setting section to add external search envelope processing
+# Zero as a default means we don't do any search -- this makes workbench happier
+DEFAULT_MACRO GEOJSON_IN_USE_SEARCH_ENVELOPE_GEOJSON_1 NO
+GEOJSON_1_USE_SEARCH_ENVELOPE "$(GEOJSON_IN_USE_SEARCH_ENVELOPE_GEOJSON_1)"
+GUI ACTIVEDISCLOSUREGROUP GEOJSON_IN_USE_SEARCH_ENVELOPE_GEOJSON_1 GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1%GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1%GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1%GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1%GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1%GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1%GEOJSON_IN_SEARCH_METHOD%GEOJSON_IN_SEARCH_METHOD_FILTER%GEOJSON_IN_SEARCH_ORDER%GEOJSON_IN_SEARCH_FEATURE%GEOJSON_IN_DUMMY_SEARCH_ENVELOPE_PARAMETER Use Search Envelope
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1 <Unused>,0 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1 0
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1)"
+GUI OPTIONAL FLOAT GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1 Minimum X:
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1 <Unused>,0 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1 0
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1)"
+GUI OPTIONAL FLOAT GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1 Minimum Y:
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1 <Unused>,0 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1 0
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1)"
+GUI OPTIONAL FLOAT GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1 Maximum X:
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1 <Unused>,0 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1 0
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1)"
+GUI OPTIONAL FLOAT GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1 Maximum Y:
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1 <Unused>, 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1 
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1)"
+GUI OPTIONAL COORDSYS GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1 Search Envelope Coordinate System:
+# ===========================================================================
+# BUG18999: We now have a soft clip to fall back on like native spatial index
+# thus we are reintroducing the clip to envelop as an option for users.
+# Defualt to soft clip as per the existing database readers we are emulating
+GUI LOOKUP GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1 <Unused>,NO 
+DEFAULT_MACRO GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1 NO
+GEOJSON_1_CLIP_TO_ENVELOPE "$(GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1)"
+GUI OPTIONAL CHECKBOX GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1 YES%NO Clip to Search Envelope
+# ===========================================================================
+DEFAULT_MACRO GEOJSON_IN_NETWORK_AUTHENTICATION_GEOJSON_1 
+GEOJSON_1_NETWORK_AUTHENTICATION "$(GEOJSON_IN_NETWORK_AUTHENTICATION_GEOJSON_1)"
+GUI OPTIONAL AUTHENTICATOR GEOJSON_IN_NETWORK_AUTHENTICATION_GEOJSON_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================ 
+DEFAULT_MACRO GEOJSON_IN_ATTRIBUTE_READING_GEOJSON_1 ALL
+GEOJSON_1_ATTRIBUTE_READING "$(GEOJSON_IN_ATTRIBUTE_READING_GEOJSON_1)"
+# ============================================================================ 
+GEOJSON_1_GENERATE_FME_BUILD_NUM 19801
+GEOJSON_1_DATASET "$(SourceDataset_GEOJSON_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "GDMMAPPERSOSI_1"
+#! END_WB_HEADER
+#! START_DEST_HEADER GDMMAPPERSOSI GDMMAPPERSOSI_1
+# ============================================================================
+# The following GUI lines prompt for a GML file to be used as the
+# the destination of the data.
+# The dataset this mapping file was generated for was:
+#! END_DEST_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO DestDataset
+INCLUDE [ if {"$(DestDataset)" != ""} {                          \
+ puts {DEFAULT_MACRO DestDataset_GDMMAPPERSOSI_1 $(DestDataset)}         \
+ } ]
+#! END_WB_HEADER
+#! START_DEST_HEADER GDMMAPPERSOSI GDMMAPPERSOSI_1
+DEFAULT_MACRO DestDataset_GDMMAPPERSOSI_1 $(DestDataset_GDMMAPPERSOSI)
+GUI FILENAME DestDataset_GDMMAPPERSOSI_1 SOSI_Files(*.sos) Destination SOSI :
+#----------------------------- Gruppe ; SOSI hode --------------------
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_TEMPPATH_GDMMAPPERSOSI_1 
+GUI OPTIONAL DIRNAME GDMMAPPERSOSI_OUT_GDMW_TEMPPATH_GDMMAPPERSOSI_1 Temp katalog for GDMMApper skriver:
+GDMMAPPERSOSI_1_GDMW_TEMPPATH "$(GDMMAPPERSOSI_OUT_GDMW_TEMPPATH_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSI_CHARSET_GDMMAPPERSOSI_1 ANSI
+GUI OPTIONAL STRING_OR_CHOICE GDMMAPPERSOSI_OUT_GDMW_SOSI_CHARSET_GDMMAPPERSOSI_1 ANSI%ISO8859-1%ISO8859-10 Tegnsett
+GDMMAPPERSOSI_1_GDMW_SOSI_CHARSET "$(GDMMAPPERSOSI_OUT_GDMW_SOSI_CHARSET_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSIVERSION_GDMMAPPERSOSI_1 4.0
+GUI OPTIONAL STRING_OR_CHOICE GDMMAPPERSOSI_OUT_GDMW_SOSIVERSION_GDMMAPPERSOSI_1 1.0%3.4%4.0%4.1%4.2%4.3%4.5 Versjon
+GDMMAPPERSOSI_1_GDMW_SOSIVERSION "$(GDMMAPPERSOSI_OUT_GDMW_SOSIVERSION_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSIUNIT_GDMMAPPERSOSI_1 .01
+GUI OPTIONAL FLOAT GDMMAPPERSOSI_OUT_GDMW_SOSIUNIT_GDMMAPPERSOSI_1 Enhet
+GDMMAPPERSOSI_1_GDMW_SOSIUNIT "$(GDMMAPPERSOSI_OUT_GDMW_SOSIUNIT_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSI_OWNER_GDMMAPPERSOSI_1 
+GUI OPTIONAL TEXT GDMMAPPERSOSI_OUT_GDMW_SOSI_OWNER_GDMMAPPERSOSI_1 Eier
+GDMMAPPERSOSI_1_GDMW_SOSI_OWNER "$(GDMMAPPERSOSI_OUT_GDMW_SOSI_OWNER_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSI_PRODUCEDBY_GDMMAPPERSOSI_1 
+GUI OPTIONAL TEXT GDMMAPPERSOSI_OUT_GDMW_SOSI_PRODUCEDBY_GDMMAPPERSOSI_1 Produsent
+GDMMAPPERSOSI_1_GDMW_SOSI_PRODUCEDBY "$(GDMMAPPERSOSI_OUT_GDMW_SOSI_PRODUCEDBY_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSI_METADATALINK_GDMMAPPERSOSI_1 
+GUI OPTIONAL TEXT GDMMAPPERSOSI_OUT_GDMW_SOSI_METADATALINK_GDMMAPPERSOSI_1 Metadatalink
+GDMMAPPERSOSI_1_GDMW_SOSI_METADATALINK "$(GDMMAPPERSOSI_OUT_GDMW_SOSI_METADATALINK_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSI_VERTICALDATUM_GDMMAPPERSOSI_1 NN54-Norsk_Null_av_1954
+GDMMAPPERSOSI_1_GDMW_SOSI_VERTICALDATUM "$(GDMMAPPERSOSI_OUT_GDMW_SOSI_VERTICALDATUM_GDMMAPPERSOSI_1)"
+GUI OPTIONAL STRING_OR_CHOICE GDMMAPPERSOSI_OUT_GDMW_SOSI_VERTICALDATUM_GDMMAPPERSOSI_1 NN54-Norsk_Null_av_1954%NN2000-Nytt_felles_nordisk_vertikalt_datum,_basert_på_Normaal_Amsterdams_Peil.%NKG89-Geoide_bestemt_av_NKG_i_1989%NNN57-Nord-Norsk_Null_av_1957%LOKAL-Lokal_referanseflate%101-Lokalt_nett_Oslo%102-Lokalt_nett_Bærum%103-Lokalt_nett_Asker%104-Lokalt_nett_Lillehammer%105-Lokalt_nett_Drammen%106-Lokalt_nett_Bergen-Askøy%107-Lokalt_nett_Trondheim%108-Lokalt_nett_Bodø%109-Lokalt_nett_Kristiansund%110-Lokalt_nett_Ålesund Vertikaldatum
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSI_OVERRIDE_SOURCESHEADPARAMS_GDMMAPPERSOSI_1 no
+GDMMAPPERSOSI_1_GDMW_SOSI_OVERRIDE_SOURCESHEADPARAMS "$(GDMMAPPERSOSI_OUT_GDMW_SOSI_OVERRIDE_SOURCESHEADPARAMS_GDMMAPPERSOSI_1)"
+GUI OPTIONAL CHECKBOX_WITHLABEL GDMMAPPERSOSI_OUT_GDMW_SOSI_OVERRIDE_SOURCESHEADPARAMS_GDMMAPPERSOSI_1 yes%no Overstyre verdier fra datakilde
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_SOSI_ADDITIONSFILE_GDMMAPPERSOSI_1 
+GUI OPTIONAL FILENAME_MUSTEXIST GDMMAPPERSOSI_OUT_GDMW_SOSI_ADDITIONSFILE_GDMMAPPERSOSI_1 SOSI-fil(*.sos)|*.sos|Tekst-fil(*.txt)|*.txt| Hodeparameterfil:
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_USETYPEREGONWRITE_GDMMAPPERSOSI_1 NO
+GDMMAPPERSOSI_1_GDMW_USETYPEREGONWRITE "$(GDMMAPPERSOSI_OUT_GDMW_USETYPEREGONWRITE_GDMMAPPERSOSI_1)"
+GUI OPTIONAL ACTIVEDISCLOSUREGROUP GDMMAPPERSOSI_OUT_GDMW_USETYPEREGONWRITE_GDMMAPPERSOSI_1 GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNFEATURETYPES_GDMMAPPERSOSI_1%GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNATTRIBUTETYPES_GDMMAPPERSOSI_1%GDMMAPPERSOSI_OUT_GDMW_USERDEFINEDTYPEREG_GDMMAPPERSOSI_1 Bruk objektkatalog ved lagring
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNFEATURETYPES_GDMMAPPERSOSI_1 
+GUI OPTIONAL CHECKBOX_WITHLABEL GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNFEATURETYPES_GDMMAPPERSOSI_1 yes%no Lagre ukjente objekttyper
+GDMMAPPERSOSI_1_GDMW_STOREUNKNOWNFEATURETYPES "$(GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNFEATURETYPES_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNATTRIBUTETYPES_GDMMAPPERSOSI_1 
+GUI OPTIONAL CHECKBOX_WITHLABEL GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNATTRIBUTETYPES_GDMMAPPERSOSI_1 yes%no Lagre ukjente egenskaper
+GDMMAPPERSOSI_1_GDMW_STOREUNKNOWNATTRIBUTETYPES "$(GDMMAPPERSOSI_OUT_GDMW_STOREUNKNOWNATTRIBUTETYPES_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_USERDEFINEDTYPEREG_GDMMAPPERSOSI_1 
+GDMMAPPERSOSI_1_GDMW_USERDEFINEDTYPEREG "$(GDMMAPPERSOSI_OUT_GDMW_USERDEFINEDTYPEREG_GDMMAPPERSOSI_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST GDMMAPPERSOSI_OUT_GDMW_USERDEFINEDTYPEREG_GDMMAPPERSOSI_1 ObjektKatalog(*.gdo)|*.gdo ObjektKatalog:
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_CONVERTARCTOVECTORS_GDMMAPPERSOSI_1 yes
+GUI OPTIONAL CHECKBOX_WITHLABEL GDMMAPPERSOSI_OUT_GDMW_CONVERTARCTOVECTORS_GDMMAPPERSOSI_1 yes%no Konvertere bue til vektorer
+GDMMAPPERSOSI_1_GDMW_CONVERTARCTOVECTORS "$(GDMMAPPERSOSI_OUT_GDMW_CONVERTARCTOVECTORS_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_STOREFMESURFACEASGDMPOINT_GDMMAPPERSOSI_1 no
+GDMMAPPERSOSI_1_GDMW_STOREFMESURFACEASGDMPOINT "$(GDMMAPPERSOSI_OUT_GDMW_STOREFMESURFACEASGDMPOINT_GDMMAPPERSOSI_1)"
+GUI OPTIONAL CHECKBOX_WITHLABEL GDMMAPPERSOSI_OUT_GDMW_STOREFMESURFACEASGDMPOINT_GDMMAPPERSOSI_1 yes%no Lagre bare sentralpunkt i flater
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_STORETOPOLOGY_GDMMAPPERSOSI_1 no
+GUI OPTIONAL CHECKBOX_WITHLABEL GDMMAPPERSOSI_OUT_GDMW_STORETOPOLOGY_GDMMAPPERSOSI_1 yes%no Lagre topologi
+GDMMAPPERSOSI_1_GDMW_STORETOPOLOGY "$(GDMMAPPERSOSI_OUT_GDMW_STORETOPOLOGY_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_IGNOREATTRIBUTENAMES_GDMMAPPERSOSI_1 fme;autocad
+GUI OPTIONAL TEXT GDMMAPPERSOSI_OUT_GDMW_IGNOREATTRIBUTENAMES_GDMMAPPERSOSI_1 Ignorer egenskaper med navn som begynner med
+GDMMAPPERSOSI_1_GDMW_IGNOREATTRIBUTENAMES "$(GDMMAPPERSOSI_OUT_GDMW_IGNOREATTRIBUTENAMES_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_WRITETHEMECODE_GDMMAPPERSOSI_1 no
+GUI OPTIONAL CHECKBOX_WITHLABEL GDMMAPPERSOSI_OUT_GDMW_WRITETHEMECODE_GDMMAPPERSOSI_1 yes%no Lagre temakoder (PTEMA,LTEMA,FTEMA,TTEMA)
+GDMMAPPERSOSI_1_GDMW_WRITETHEMECODE "$(GDMMAPPERSOSI_OUT_GDMW_WRITETHEMECODE_GDMMAPPERSOSI_1)"
+# ===========================================================================
+DEFAULT_MACRO GDMMAPPERSOSI_OUT_GDMW_OBJTYPEFORGENERATEDCURVES_GDMMAPPERSOSI_1 KantUtsnitt
+GUI OPTIONAL TEXT GDMMAPPERSOSI_OUT_GDMW_OBJTYPEFORGENERATEDCURVES_GDMMAPPERSOSI_1 Objekttype for genererte kurver
+GDMMAPPERSOSI_1_GDMW_OBJTYPEFORGENERATEDCURVES "$(GDMMAPPERSOSI_OUT_GDMW_OBJTYPEFORGENERATEDCURVES_GDMMAPPERSOSI_1)"
+# ===========================================================================
+#-GUI LOOKUP GDMW_USEUTF8CHARSET <Unused>,
+#GUI OPTIONAL CHECKBOX_WITHLABEL GDMW_USEUTF8CHARSET yes%no Konvertere til UTF-8 tegnsett
+#DEFAULT_VALUE GDMW_USEUTF8CHARSET no
+# ============================================================================ 
+GDMMAPPERSOSI_1_GENERATE_FME_BUILD_NUM 19801
+GDMMAPPERSOSI_1_DATASET "$(DestDataset_GDMMAPPERSOSI_1)"
+#! END_DEST_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)Utsnitt json(Norgeskart.no)2sosii.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+DEFAULT_MACRO DATASET_KEYWORD_GEOJSON_1 GEOJSON_1
+DEFAULT_MACRO DATASET_KEYWORD_GDMMAPPERSOSI_1 GDMMAPPERSOSI_1
+# -------------------------------------------------------------------------
+
+GEOJSON_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME Utsnitt json(Norgeskart.no)2sosii
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+GEOJSON_1_DEF utsnitt   id                           string   measurement                  string   style.fill.color             string   style.stroke.color           string   style.stroke.width           int
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_GEOJSON_1)   INPUT FEATURE_TYPE *    ROUTE GEOJSON GEOJSON_1::utsnitt multi_reader_keyword,$(DATASET_KEYWORD_GEOJSON_1) TO FME_GENERIC ::utsnitt ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+GEOJSON_1_MERGE_DEF GEOJSON_1::utsnitt EXACT utsnitt
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "utsnitt (GEOJSON_1) Splitter"    INPUT FEATURE_TYPE utsnitt    OUTPUT FEATURE_TYPE utsnitt_GEOJSON_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+# Wipe out the source setting if it was untouched from the default setting
+DEFAULT_MACRO Reprojector_SOURCE "Read from feature"
+INCLUDE [if { {Read from feature} == {Read from feature} } {             puts {MACRO Reprojector_SOURCE}          }         ]
+FACTORY_DEF * TeeFactory    FACTORY_NAME Reprojector    INPUT  FEATURE_TYPE utsnitt_GEOJSON_1    OUTPUT FEATURE_TYPE Reprojector_REPROJECTED         @Reproject($(Reprojector_SOURCE),"EUREF89.NTM-10",NearestNeighbor,PreserveCells,Reprojector,"COORD_SYS_WARNING",RASTER_TOLERANCE,0.0)
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC Reprojector_REPROJECTED TO GDMMAPPERSOSI __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>utsnitt<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
+# -------------------------------------------------------------------------
+GDMMAPPERSOSI_1_DEF utsnitt   id                           buffer   measurement                  buffer   style.fill.color             buffer   style.stroke.color           buffer   style.stroke.width           int32
