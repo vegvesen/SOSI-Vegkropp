@@ -1,2 +1,2 @@
 # SOSI-Vegkropp
-Se [wiki](https://github.com/facebook/react/wiki/Sites-Using-React) for detaljert informasjon.
+Se [wiki](https://github.com/vegvesen/SOSI-Vegkropp/wiki) for detaljert informasjon.
