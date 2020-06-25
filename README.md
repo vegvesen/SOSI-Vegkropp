@@ -1,2 +1,2 @@
 # SOSI-Vegkropp
-Arbeid med SOSI-standard for vegkropp
+Se wiki for detaljert informasjon.
