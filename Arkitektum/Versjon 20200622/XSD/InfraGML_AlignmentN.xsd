@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+xmlns="http://www.w3.org/2001/XMLSchema" 
+xmlns:gml="http://www.opengis.net/gml/3.2" 
+xmlns:lia="http://www.opengis.net/infragml/alignment/1.0" 
+xmlns:infraN="http://skjema.geonorge.no/SOSI/produktspesifikasjon/Vegkropp/0.8" 
+targetNamespace="http://skjema.geonorge.no/SOSI/produktspesifikasjon/Vegkropp/0.8" elementFormDefault="qualified" version="0.8">
+
+
+	<include schemaLocation="SOSIVegkropp.xsd"/>
+    <import namespace="http://www.opengis.net/infragml/alignment/1.0" schemaLocation="http://schemas.opengis.net/infragml/part3/1.0/alignment.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+	<element name="Referanselinje" type="infraN:ReferanselinjeType" substitutionGroup="lia:Alignment">
+		<annotation>
+			<documentation>XSD_redigering: Erstatte  substitutionGroup="veg:Alignment" med substitutionGroup="lia:Alignment"</documentation>
+		</annotation>
+	</element>
+	<complexType name="ReferanselinjeType">
+		<complexContent>
+			<extension base="lia:AlignmentType">
+				<sequence>
+					<element name="norskeTillegg" type="infraN:ReferanseLinje_norskeTilleggPropertyType" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ReferanselinjePropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Referanselinje"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+</schema>

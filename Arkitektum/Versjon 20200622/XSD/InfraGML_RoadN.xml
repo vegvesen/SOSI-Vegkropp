@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+xmlns="http://www.w3.org/2001/XMLSchema" 
+xmlns:gml="http://www.opengis.net/gml/3.2" 
+xmlns:infraN="http://skjema.geonorge.no/SOSI/produktspesifikasjon/Vegkropp/0.8" 
+
+xmlns:li="http://www.opengis.net/infragml/core/1.0" xmlns:lifr="http://www.opengis.net/infragml/road/1.0" 
+targetNamespace="http://skjema.geonorge.no/SOSI/produktspesifikasjon/Vegkropp/0.8" elementFormDefault="qualified" version="0.8">
+
+	<include schemaLocation="SOSIVegkropp.xsd"/>
+	
+    <import namespace="http://www.opengis.net/infragml/core/1.0" schemaLocation="http://schemas.opengis.net/infragml/part0/1.0/core.xsd"/>
+	<import namespace="http://www.opengis.net/infragml/road/1.0" schemaLocation="http://schemas.opengis.net/infragml/part4/1.0/road.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+	<element name="RoadElementN" type="infraN:RoadElementNType" substitutionGroup="gml:AbstractFeature">
+		<annotation>
+			<documentation>Hensikt: Ta bort kodeliste RoadElementType fra RoadElement
+
+XSD-redigering: Erstatt "substitutionGroup "InfraN:AbstractFeature" med substitutionGroup="gml:AbstractFeature"</documentation>
+		</annotation>
+	</element>
+	<complexType name="RoadElementNType">
+		<complexContent>
+			<extension base="gml:AbstractFeatureType">
+				<sequence>
+					<element name="roadElementID">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+									    <element name="ID" type="li:IDType"/>
+										<!-- <element ref="infraN:ID"/> -->
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="material" type="string" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="RoadElementNPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:RoadElementN"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="StringLineN" type="infraN:StringLineNType" substitutionGroup="lifr:StringLine">
+		<annotation>
+			<documentation>linjer som g&amp;#229;r langs hele vegen.
+
+Beregnet med ett punkt pr generert tverrprofil, og lenket sammen.
+
+XSD-redigering: Erstatt "substitutionGroup "infraN:StringLine" med substitutionGroup="lifr:StringLine"</documentation>
+		</annotation>
+	</element>
+	<complexType name="StringLineNType">
+		<complexContent>
+			<extension base="lifr:StringLineType">
+				<sequence>
+					<element name="overbygningslag" type="infraN:OverbygningLagtypeType" minOccurs="0"/>
+					<element name="vegdesignRef" type="infraN:VegdesignRefPropertyType" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="StringLineNPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:StringLineN"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Veg" type="infraN:VegType" substitutionGroup="lifr:Road">
+		<annotation>
+			<documentation>XSD-redigering: Erstatt "substitutionGroup="InfraN:Road" med substitutionGroup="lifr:Road"</documentation>
+		</annotation>
+	</element>
+	<complexType name="VegType">
+		<complexContent>
+			<extension base="lifr:RoadType">
+				<sequence>
+					<element name="norskeTillegg" type="infraN:Veg_norskeTilleggPropertyType" minOccurs="0"/>
+					<element name="senterlinje" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:Referanselinje"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="element" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:VegElement"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Veg"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="VegElement" type="infraN:VegElementType" abstract="true" substitutionGroup="infraN:RoadElementN"/>
+	<complexType name="VegElementType" abstract="true">
+		<complexContent>
+			<extension base="infraN:RoadElementNType">
+				<sequence>
+					<element name="fraProfil" type="double"/>
+					<element name="tilProfil" type="double"/>
+					<element name="norskeTillegg" type="infraN:VegElement_norskeTilleggPropertyType" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegElementPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:VegElement"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="VegdesignRef" type="infraN:VegdesignRefType" substitutionGroup="gml:AbstractObject"/>
+	<complexType name="VegdesignRefType">
+		<sequence>
+			<element name="flatetype" type="infraN:VegdesignElementTypePropertyType"/>
+			<element name="flaterekkefølge" type="integer" minOccurs="0"/>
+			<element name="vegside" type="li:SideType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="VegdesignRefPropertyType">
+		<sequence>
+			<element ref="infraN:VegdesignRef"/>
+		</sequence>
+	</complexType>
+	<element name="Vegelementsamling" type="infraN:VegelementsamlingType" substitutionGroup="lifr:RoadElementSet">
+		<annotation>
+			<documentation>XSD-redigering: Erstatt "substitutionGroup="InfraN:RoadElementSet" med substitutionGroup="lifr:RoadElementSet"</documentation>
+		</annotation>
+	</element>
+	<complexType name="VegelementsamlingType">
+		<complexContent>
+			<extension base="lifr:RoadElementSetType">
+				<sequence>
+					<element name="elementN" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:RoadElementN"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegelementsamlingPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Vegelementsamling"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+</schema>

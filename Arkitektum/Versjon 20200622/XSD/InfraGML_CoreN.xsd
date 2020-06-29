@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:infraN="http://skjema.geonorge.no/SOSI/produktspesifikasjon/Vegkropp/0.8" targetNamespace="http://skjema.geonorge.no/SOSI/produktspesifikasjon/Vegkropp/0.8" elementFormDefault="qualified" version="0.8">
+	<include schemaLocation="SOSIVegkropp.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+	<element name="SpatialRepresentationN" type="infraN:SpatialRepresentationNType" abstract="true" substitutionGroup="gml:AbstractGML"/>
+	<complexType name="SpatialRepresentationNType" abstract="true">
+		<complexContent>
+			<extension base="gml:AbstractGMLType">
+				<sequence>
+					<element name="name" type="string" minOccurs="0"/>
+					<element name="description" type="string" minOccurs="0"/>
+					<element name="crs" type="gml:CRSPropertyType" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="SpatialRepresentationNPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:SpatialRepresentationN"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+</schema>

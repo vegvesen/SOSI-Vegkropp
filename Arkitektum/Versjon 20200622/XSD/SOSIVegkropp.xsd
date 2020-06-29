@@ -1,0 +1,2139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+xmlns="http://www.w3.org/2001/XMLSchema" 
+xmlns:gml="http://www.opengis.net/gml/3.2" 
+xmlns:infraN="http://skjema.geonorge.no/SOSI/produktspesifikasjon/Vegkropp/0.8" 
+
+xmlns:lifr="http://www.opengis.net/infragml/road/1.0" 
+xmlns:lif="http://www.opengis.net/infragml/facility/1.0" 
+xmlns:li="http://www.opengis.net/infragml/core/1.0" 
+
+xmlns:nvdb="https://raw.githubusercontent.com/jetgeo/NVDBGML/master/XSD/OLFV/V430" 
+targetNamespace="http://skjema.geonorge.no/SOSI/produktspesifikasjon/Vegkropp/0.8" 
+elementFormDefault="qualified" version="0.8">
+
+	<include schemaLocation="InfraGML_AlignmentN.xsd"/>
+	<include schemaLocation="InfraGML_CoreN.xsd"/>
+	<!-- <include schemaLocation="InfraGML_Part1_LandFeatureN.xsd"/> -->
+	<include schemaLocation="InfraGML_RoadN.xsd"/>
+	<!-- <include schemaLocation="Plassholder_InfraGML.xsd"/>
+	<include schemaLocation="Plassholder_NVDB.xsd"/>  -->
+	<!--- manuelt lagt inn -->
+	<import namespace="http://www.opengis.net/infragml/road/1.0" schemaLocation="http://schemas.opengis.net/infragml/part4/1.0/road.xsd"/>
+	<import namespace="http://www.opengis.net/infragml/core/1.0" schemaLocation="http://schemas.opengis.net/infragml/part0/1.0/core.xsd"/>
+	
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<import namespace="https://raw.githubusercontent.com/jetgeo/NVDBGML/master/XSD/OLFV/V430" schemaLocation="https://raw.githubusercontent.com/jetgeo/NVDBGML/master/XSD/OLFV/V430/OLFV.xsd"/>
+	<!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+	<element name="BreddeHelling" type="infraN:BreddeHellingType" substitutionGroup="gml:AbstractObject">
+		<annotation>
+			<documentation>Denne datatypen gjør at ytterkanten på flata kan angis på flere måter:
+1. Det er angitt kun en verdi: Dette er bredden eller hellingen som skal brukes på hele ytterkanten
+2. "ytterkantEr Alignment" angir en eller flere alignment-linjer. På de delene av flaten slike er angitt, er det disse som skal brukes, ikke den angitte bredden/hellingen i verdi-attributten
+3. Flaten skal gå ut til den skjærer terrenget. Dersom attributten "ytterkantErterreng" er "true" brukes ikke de to foregående (verdi eller ytterkantErAlignement).</documentation>
+		</annotation>
+	</element>
+	<complexType name="BreddeHellingType">
+		<sequence>
+			<element name="verdi" type="double" minOccurs="0"/>
+			<element name="ytterkantErAlignment" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<targetElement xmlns="http://www.opengis.net/gml/3.2">infraN:LinearElement</targetElement>
+					</appinfo>
+				</annotation>
+				<complexType>
+					<complexContent>
+						<extension base="gml:AbstractMemberType">
+							<sequence/>
+							<attributeGroup ref="gml:AssociationAttributeGroup"/>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="ytterkantErTerreng" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation>der vegkropp treffer terreng
+
+XSD-redigering: InfraN:LandSurface erstattes med lilf:LandSurface</documentation>
+					<appinfo>
+						<targetElement xmlns="http://www.opengis.net/gml/3.2">infraN:LandSurface</targetElement>
+					</appinfo>
+				</annotation>
+				<complexType>
+					<complexContent>
+						<extension base="gml:AbstractFeatureMemberType">
+							<sequence/>
+							<attributeGroup ref="gml:AssociationAttributeGroup"/>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="BreddeHellingPropertyType">
+		<sequence>
+			<element ref="infraN:BreddeHelling"/>
+		</sequence>
+	</complexType>
+	<simpleType name="DimensjonerendeHastighet_2019Type">
+		<annotation>
+			<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt; 
+
+Definisjon: 
+- 30 kmt
+- 40 kmt
+- 50 kmt
+- 60 kmt
+- 80 kmt
+- 90 kmt
+- 110 kmt</documentation>
+		</annotation>
+		<union memberTypes="infraN:DimensjonerendeHastighet_2019EnumerationType infraN:DimensjonerendeHastighet_2019OtherType"/>
+	</simpleType>
+	<simpleType name="DimensjonerendeHastighet_2019EnumerationType">
+		<annotation>
+			<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt; 
+
+Definisjon: 
+- 30 kmt
+- 40 kmt
+- 50 kmt
+- 60 kmt
+- 80 kmt
+- 90 kmt
+- 110 kmt</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="30kmt">
+				<annotation>
+					<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="40 kmt">
+				<annotation>
+					<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="50 kmt">
+				<annotation>
+					<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="60 kmt">
+				<annotation>
+					<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="80 kmt">
+				<annotation>
+					<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="90 kmt">
+				<annotation>
+					<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="110 kmt">
+				<annotation>
+					<documentation>Kilde: Kilde:N100 Tabell C3
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeHastighet_2019OtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeKjøremåte_2019Type">
+		<annotation>
+			<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/E"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/E&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon: 
+Beskriver den frihet et kj&amp;#248;ret&amp;#248;y vil ha i veg-/kj&amp;#248;rearealet ved trafikkering av vegnettet. Se kj&amp;#248;rem&amp;#229;te A, B og C.
+
+Kj&amp;#248;rem&amp;#229;te A:
+Ved kj&amp;#248;rem&amp;#229;te A forutsettes f&amp;#248;lgende n&amp;#229;rdet gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- kj&amp;#248;ret&amp;#248;yet skal kunne trafikkere veg-/gateanlegget kun ved bruk av eget kj&amp;#248;refelt. Dette betyr athele kj&amp;#248;ret&amp;#248;yet, inklusiv overheng, skal kunne bevege seg innenfor sitt eget kj&amp;#248;refelt
+- p&amp;#229; veger og gater utenom kryss skal disse strekningene kunne trafikkeres med en fart tilsvarendefartsgrensen
+- i kryss skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re gjennom krysset med en fart p&amp;#229; 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet skal ikke beh&amp;#248;ve &amp;#229; rygge p&amp;#229; snuplasser
+
+Kj&amp;#248;rem&amp;#229;te B:
+Ved kj&amp;#248;rem&amp;#229;te B forutsettes f&amp;#248;lgende n&amp;#229;r det gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- i kryss forutsettes kj&amp;#248;ret&amp;#248;yet &amp;#229; kunne bruke deler av motg&amp;#229;ende kj&amp;#248;refelt i den veg/gate kj&amp;#248;ret&amp;#248;yetsvinger inn i 
+- p&amp;#229; veger og gater utenfor kryss antas at valgt kj&amp;#248;ret&amp;#248;y p&amp;#229; enkelte partier trafikkerer disse med enlavere fart enn fartsgrensen
+- i kryss forutsettes valgt kj&amp;#248;ret&amp;#248;y &amp;#229; kunne kj&amp;#248;re gjennom krysset med en lavere fart enn 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet vil i noen tilfeller m&amp;#229;tte regne med &amp;#229; rygge p&amp;#229; snuplasser
+
+
+Kj&amp;#248;rem&amp;#229;te C
+Ved kj&amp;#248;rem&amp;#229;te B forutsettes f&amp;#248;lgende n&amp;#229;r det gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- i kryss forutsettes kj&amp;#248;ret&amp;#248;yet &amp;#229; kunne bruke deler av motg&amp;#229;ende kj&amp;#248;refelt i den veg/gate kj&amp;#248;ret&amp;#248;yetsvinger inn i 
+- p&amp;#229; veger og gater utenfor kryss antas at valgt kj&amp;#248;ret&amp;#248;y p&amp;#229; enkelte partier trafikkerer disse med enlavere fart enn fartsgrensen
+- i kryss forutsettes valgt kj&amp;#248;ret&amp;#248;y &amp;#229; kunne kj&amp;#248;re gjennom krysset med en lavere fart enn 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet vil i noen tilfeller m&amp;#229;tte regne med &amp;#229; rygge p&amp;#229; snuplasser</documentation>
+		</annotation>
+		<union memberTypes="infraN:DimensjonerendeKjøremåte_2019EnumerationType infraN:DimensjonerendeKjøremåte_2019OtherType"/>
+	</simpleType>
+	<simpleType name="DimensjonerendeKjøremåte_2019EnumerationType">
+		<annotation>
+			<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/E"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/E&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon: 
+Beskriver den frihet et kj&amp;#248;ret&amp;#248;y vil ha i veg-/kj&amp;#248;rearealet ved trafikkering av vegnettet. Se kj&amp;#248;rem&amp;#229;te A, B og C.
+
+Kj&amp;#248;rem&amp;#229;te A:
+Ved kj&amp;#248;rem&amp;#229;te A forutsettes f&amp;#248;lgende n&amp;#229;rdet gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- kj&amp;#248;ret&amp;#248;yet skal kunne trafikkere veg-/gateanlegget kun ved bruk av eget kj&amp;#248;refelt. Dette betyr athele kj&amp;#248;ret&amp;#248;yet, inklusiv overheng, skal kunne bevege seg innenfor sitt eget kj&amp;#248;refelt
+- p&amp;#229; veger og gater utenom kryss skal disse strekningene kunne trafikkeres med en fart tilsvarendefartsgrensen
+- i kryss skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re gjennom krysset med en fart p&amp;#229; 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet skal ikke beh&amp;#248;ve &amp;#229; rygge p&amp;#229; snuplasser
+
+Kj&amp;#248;rem&amp;#229;te B:
+Ved kj&amp;#248;rem&amp;#229;te B forutsettes f&amp;#248;lgende n&amp;#229;r det gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- i kryss forutsettes kj&amp;#248;ret&amp;#248;yet &amp;#229; kunne bruke deler av motg&amp;#229;ende kj&amp;#248;refelt i den veg/gate kj&amp;#248;ret&amp;#248;yetsvinger inn i 
+- p&amp;#229; veger og gater utenfor kryss antas at valgt kj&amp;#248;ret&amp;#248;y p&amp;#229; enkelte partier trafikkerer disse med enlavere fart enn fartsgrensen
+- i kryss forutsettes valgt kj&amp;#248;ret&amp;#248;y &amp;#229; kunne kj&amp;#248;re gjennom krysset med en lavere fart enn 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet vil i noen tilfeller m&amp;#229;tte regne med &amp;#229; rygge p&amp;#229; snuplasser
+
+
+Kj&amp;#248;rem&amp;#229;te C
+Ved kj&amp;#248;rem&amp;#229;te B forutsettes f&amp;#248;lgende n&amp;#229;r det gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- i kryss forutsettes kj&amp;#248;ret&amp;#248;yet &amp;#229; kunne bruke deler av motg&amp;#229;ende kj&amp;#248;refelt i den veg/gate kj&amp;#248;ret&amp;#248;yetsvinger inn i 
+- p&amp;#229; veger og gater utenfor kryss antas at valgt kj&amp;#248;ret&amp;#248;y p&amp;#229; enkelte partier trafikkerer disse med enlavere fart enn fartsgrensen
+- i kryss forutsettes valgt kj&amp;#248;ret&amp;#248;y &amp;#229; kunne kj&amp;#248;re gjennom krysset med en lavere fart enn 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet vil i noen tilfeller m&amp;#229;tte regne med &amp;#229; rygge p&amp;#229; snuplasser</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="A">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/E"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/E&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon: 
+Beskriver den frihet et kj&amp;#248;ret&amp;#248;y vil ha i veg-/kj&amp;#248;rearealet ved trafikkering av vegnettet. Se kj&amp;#248;rem&amp;#229;te A, B og C.
+
+
+Kj&amp;#248;rem&amp;#229;te A:
+Ved kj&amp;#248;rem&amp;#229;te A forutsettes f&amp;#248;lgende n&amp;#229;rdet gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- kj&amp;#248;ret&amp;#248;yet skal kunne trafikkere veg-/gateanlegget kun ved bruk av eget kj&amp;#248;refelt. Dette betyr athele kj&amp;#248;ret&amp;#248;yet, inklusiv overheng, skal kunne bevege seg innenfor sitt eget kj&amp;#248;refelt
+- p&amp;#229; veger og gater utenom kryss skal disse strekningene kunne trafikkeres med en fart tilsvarendefartsgrensen
+- i kryss skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re gjennom krysset med en fart p&amp;#229; 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet skal ikke beh&amp;#248;ve &amp;#229; rygge p&amp;#229; snuplasser</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="B">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/E"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/E&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon: 
+Beskriver den frihet et kj&amp;#248;ret&amp;#248;y vil ha i veg-/kj&amp;#248;rearealet ved trafikkering av vegnettet. Se kj&amp;#248;rem&amp;#229;te A, B og C.
+
+Kj&amp;#248;rem&amp;#229;te B:
+Ved kj&amp;#248;rem&amp;#229;te B forutsettes f&amp;#248;lgende n&amp;#229;r det gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- i kryss forutsettes kj&amp;#248;ret&amp;#248;yet &amp;#229; kunne bruke deler av motg&amp;#229;ende kj&amp;#248;refelt i den veg/gate kj&amp;#248;ret&amp;#248;yetsvinger inn i 
+- p&amp;#229; veger og gater utenfor kryss antas at valgt kj&amp;#248;ret&amp;#248;y p&amp;#229; enkelte partier trafikkerer disse med enlavere fart enn fartsgrensen
+- i kryss forutsettes valgt kj&amp;#248;ret&amp;#248;y &amp;#229; kunne kj&amp;#248;re gjennom krysset med en lavere fart enn 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet vil i noen tilfeller m&amp;#229;tte regne med &amp;#229; rygge p&amp;#229; snuplasser</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="C">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/E"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/E&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon: 
+Beskriver den frihet et kj&amp;#248;ret&amp;#248;y vil ha i veg-/kj&amp;#248;rearealet ved trafikkering av vegnettet. Se kj&amp;#248;rem&amp;#229;te A, B og C.
+
+Kj&amp;#248;rem&amp;#229;te C
+Ved kj&amp;#248;rem&amp;#229;te B forutsettes f&amp;#248;lgende n&amp;#229;r det gjelder dimensjonerende kj&amp;#248;ret&amp;#248;y:
+- i kryss forutsettes kj&amp;#248;ret&amp;#248;yet &amp;#229; kunne bruke deler av motg&amp;#229;ende kj&amp;#248;refelt i den veg/gate kj&amp;#248;ret&amp;#248;yetsvinger inn i 
+- p&amp;#229; veger og gater utenfor kryss antas at valgt kj&amp;#248;ret&amp;#248;y p&amp;#229; enkelte partier trafikkerer disse med enlavere fart enn fartsgrensen
+- i kryss forutsettes valgt kj&amp;#248;ret&amp;#248;y &amp;#229; kunne kj&amp;#248;re gjennom krysset med en lavere fart enn 15 km/t
+- i slyng skal kj&amp;#248;ret&amp;#248;yet kunne kj&amp;#248;re med en fart p&amp;#229; 15 km/t
+- kj&amp;#248;ret&amp;#248;yet vil i noen tilfeller m&amp;#229;tte regne med &amp;#229; rygge p&amp;#229; snuplasser</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeKjøremåte_2019OtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeMotorkjøretøy_2019Type">
+		<annotation>
+			<documentation>Kilde: N100 E1.2
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon: 
+Dimensjonerende kj&amp;#248;ret&amp;#248;y velges ut fra veg-og gatenettets funksjon, trafikkmengde og muligheterfor omkj&amp;#248;ring. Dimensjoner gitt i Figur E.7skal legges til grunn. 
+
+Typer: 
+- Personbiler, varebiler og kombibiler (P)- Liten lastebil (LL)
+- Lastebiler (inkl. brannbiler med stige) (L)
+- Boogiebusser (B)
+- Vogntog (VT). 
+- Modulvogntog (MVT)</documentation>
+		</annotation>
+		<union memberTypes="infraN:DimensjonerendeMotorkjøretøy_2019EnumerationType infraN:DimensjonerendeMotorkjøretøy_2019OtherType"/>
+	</simpleType>
+	<simpleType name="DimensjonerendeMotorkjøretøy_2019EnumerationType">
+		<annotation>
+			<documentation>Kilde: N100 E1.2
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon: 
+Dimensjonerende kj&amp;#248;ret&amp;#248;y velges ut fra veg-og gatenettets funksjon, trafikkmengde og muligheterfor omkj&amp;#248;ring. Dimensjoner gitt i Figur E.7skal legges til grunn. 
+
+Typer: 
+- Personbiler, varebiler og kombibiler (P)- Liten lastebil (LL)
+- Lastebiler (inkl. brannbiler med stige) (L)
+- Boogiebusser (B)
+- Vogntog (VT). 
+- Modulvogntog (MVT)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="PersonbilVarebilLitenLastebil">
+				<annotation>
+					<documentation>Kilde: N100 E1.2
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="L"/>
+			<enumeration value="B">
+				<annotation>
+					<documentation>Kilde: N100 E1.2
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="VT">
+				<annotation>
+					<documentation>Kilde: N100 E1.2
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="MVT">
+				<annotation>
+					<documentation>Kilde: N100 E1.2
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeMotorkjøretøy_2019OtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<element name="DimensjonerendeParametere_Veg" type="infraN:DimensjonerendeParametere_VegType" substitutionGroup="gml:AbstractObject"/>
+	<complexType name="DimensjonerendeParametere_VegType">
+		<sequence>
+			<element name="standardklasseVegstandard" type="infraN:StandardklasseVegstandard_2019Type"/>
+			<element name="dimensjonerendeHastighet" type="infraN:DimensjonerendeHastighet_2019Type"/>
+			<element name="dimensjonerendeVegbredde" type="infraN:DimensjonerendeVegbredde_2019Type"/>
+			<element name="dimensjonerendeMotorkjøretøy" type="infraN:DimensjonerendeMotorkjøretøy_2019Type"/>
+			<element name="dimensjonerendeTrafikkmengdeÅDT" type="infraN:DimensjonerendeTrafikkmengdeÅDT_2019Type"/>
+			<element name="dimensjonerendeKjøremåte" type="infraN:DimensjonerendeKjøremåte_2019Type"/>
+			<element name="maxOverhøydeProsent" type="infraN:MaxOverhøydeProsent_2019Type"/>
+			<element name="dimensjonerendeTrafikk" type="infraN:DimensjonerendeTrafikk_2019Type"/>
+		</sequence>
+	</complexType>
+	<complexType name="DimensjonerendeParametere_VegPropertyType">
+		<sequence>
+			<element ref="infraN:DimensjonerendeParametere_Veg"/>
+		</sequence>
+	</complexType>
+	<simpleType name="DimensjonerendeTrafikk_2019Type">
+		<annotation>
+			<documentation>Kilde: N200
+
+Dimensjonerende aksellast: 10 tonn
+Dimensjoneringsperiode: 20 &amp;#229;r
+Dimensjonerende trafikkbelastning: Ekvivalente 10 tonns aksler per felt i dimensjoneringsperioden.
+
+Trafikkgruppe m&amp;#229;lt i ekvivalente 10 tonns aksler (N): 
+
+A &lt; 500 000
+B 500 000 - 1 000 000
+C 1 000 000 - 2 000 000
+D 2 000 000 - 3 500 000
+E 3 500 000 - 10 000 000
+F &gt; 10 000 000</documentation>
+		</annotation>
+		<union memberTypes="infraN:DimensjonerendeTrafikk_2019EnumerationType infraN:DimensjonerendeTrafikk_2019OtherType"/>
+	</simpleType>
+	<simpleType name="DimensjonerendeTrafikk_2019EnumerationType">
+		<annotation>
+			<documentation>Kilde: N200
+
+Dimensjonerende aksellast: 10 tonn
+Dimensjoneringsperiode: 20 &amp;#229;r
+Dimensjonerende trafikkbelastning: Ekvivalente 10 tonns aksler per felt i dimensjoneringsperioden.
+
+Trafikkgruppe m&amp;#229;lt i ekvivalente 10 tonns aksler (N): 
+
+A &lt; 500 000
+B 500 000 - 1 000 000
+C 1 000 000 - 2 000 000
+D 2 000 000 - 3 500 000
+E 3 500 000 - 10 000 000
+F &gt; 10 000 000</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="A">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="B">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="C">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="D">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="E">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="F">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeTrafikk_2019OtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeTrafikkmengdeÅDT_2019Type">
+		<annotation>
+			<documentation>Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon:
+Dimensjonerende trafikkmengde Trafikkmengden i prognose&amp;#229;ret legges til grunn for dimensjonering av veger. For veger settes prognose&amp;#229;ret til 20 &amp;#229;r etter forventet &amp;#229;pnings&amp;#229;r i henhold til forskrift til veglovens &amp;#167; 13. Det foreligger fylkesvise prognoser for biltrafikken som revideres hvert 4. &amp;#229;r. Disse legges til grunn dersom det ikke finnes annen og bedre dokumentasjon, som for eksempel regionale transportmodeller. For kollektivtrafikk, sykkeltrafikk og gangtrafikk er ofte prognosegrunnlaget mangelfullt. Her er det n&amp;#248;dvendig med lokale vurderinger.  Vanlige vekstprognoser for biltrafikk er basert p&amp;#229; befolkningsvekst og inntekstvekst. Disse er lite nyttige i byer og balansert kapasitet anbefales lagt til grunn. Balansert kapasitet betyr at veger inn mot byen ikke har mer trafikk enn sentrale byomr&amp;#229;dene kan h&amp;#229;ndtere, og at det etableres en tjenlig rolledeling mellom transportmidlene basert p&amp;#229; politiske m&amp;#229;l for den enkelte by eller tettsted. 
+I byer vil det v&amp;#230;re aktuelt med tiltak for &amp;#229; styre omfanget av transport og valg av transportmiddel, som for eksempel gjennom restriksjoner eller bedre tilrettelegging for milj&amp;#248;vennlig bytransport, for eksempel for &amp;#229; n&amp;#229; nullvekstm&amp;#229;let i NTP.  Det vil derfor v&amp;#230;re planlagt trafikkmengde som legges til grunn for dimensjonering av gaten.
+
+&amp;#197;DT
+&lt;6000
+6000-12000
+&gt;12000
+&lt;4000
+&lt;12000
+&lt;1500
+&lt;300</documentation>
+		</annotation>
+		<union memberTypes="infraN:DimensjonerendeTrafikkmengdeÅDT_2019EnumerationType infraN:DimensjonerendeTrafikkmengdeÅDT_2019OtherType"/>
+	</simpleType>
+	<simpleType name="DimensjonerendeTrafikkmengdeÅDT_2019EnumerationType">
+		<annotation>
+			<documentation>Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+Definisjon:
+Dimensjonerende trafikkmengde Trafikkmengden i prognose&amp;#229;ret legges til grunn for dimensjonering av veger. For veger settes prognose&amp;#229;ret til 20 &amp;#229;r etter forventet &amp;#229;pnings&amp;#229;r i henhold til forskrift til veglovens &amp;#167; 13. Det foreligger fylkesvise prognoser for biltrafikken som revideres hvert 4. &amp;#229;r. Disse legges til grunn dersom det ikke finnes annen og bedre dokumentasjon, som for eksempel regionale transportmodeller. For kollektivtrafikk, sykkeltrafikk og gangtrafikk er ofte prognosegrunnlaget mangelfullt. Her er det n&amp;#248;dvendig med lokale vurderinger.  Vanlige vekstprognoser for biltrafikk er basert p&amp;#229; befolkningsvekst og inntekstvekst. Disse er lite nyttige i byer og balansert kapasitet anbefales lagt til grunn. Balansert kapasitet betyr at veger inn mot byen ikke har mer trafikk enn sentrale byomr&amp;#229;dene kan h&amp;#229;ndtere, og at det etableres en tjenlig rolledeling mellom transportmidlene basert p&amp;#229; politiske m&amp;#229;l for den enkelte by eller tettsted. 
+I byer vil det v&amp;#230;re aktuelt med tiltak for &amp;#229; styre omfanget av transport og valg av transportmiddel, som for eksempel gjennom restriksjoner eller bedre tilrettelegging for milj&amp;#248;vennlig bytransport, for eksempel for &amp;#229; n&amp;#229; nullvekstm&amp;#229;let i NTP.  Det vil derfor v&amp;#230;re planlagt trafikkmengde som legges til grunn for dimensjonering av gaten.
+
+&amp;#197;DT
+&lt;6000
+6000-12000
+&gt;12000
+&lt;4000
+&lt;12000
+&lt;1500
+&lt;300</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="&lt;6000">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="&gt;12000">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="&lt;12000">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="6000-12000">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="&lt;4000">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="&lt;1500">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="&lt;300">
+				<annotation>
+					<documentation>&amp;#197;DT - &amp;#197;rsd&amp;#248;gntrafikk, Se Wikipedia https://no.wikipedia.org/wiki/%C3%85rsd%C3%B8gntrafikk
+Kilde: N100 s.11
+&lt;a href="https://svv.netlify.com/N100/C"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/C&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeTrafikkmengdeÅDT_2019OtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeVegbredde_2019Type">
+		<annotation>
+			<documentation>Usikker p&amp;#229; hvor denne kommer fra- om det er N100 C3 eller hva, og hva m nummerering?</documentation>
+		</annotation>
+		<union memberTypes="infraN:DimensjonerendeVegbredde_2019EnumerationType infraN:DimensjonerendeVegbredde_2019OtherType"/>
+	</simpleType>
+	<simpleType name="DimensjonerendeVegbredde_2019EnumerationType">
+		<annotation>
+			<documentation>Usikker p&amp;#229; hvor denne kommer fra- om det er N100 C3 eller hva, og hva m nummerering?</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="14"/>
+			<enumeration value="13"/>
+			<enumeration value="12"/>
+			<enumeration value="11"/>
+			<enumeration value="10"/>
+			<enumeration value="9"/>
+			<enumeration value="8"/>
+			<enumeration value="7"/>
+			<enumeration value="6"/>
+			<enumeration value="5"/>
+			<enumeration value="4"/>
+			<enumeration value="3"/>
+			<enumeration value="2"/>
+			<enumeration value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DimensjonerendeVegbredde_2019OtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<element name="Gate_N100" type="infraN:Gate_N100Type" substitutionGroup="gml:AbstractFeature">
+		<annotation>
+			<documentation>N100 Kap B.4, B.5, B.6, B.7</documentation>
+		</annotation>
+	</element>
+	<complexType name="Gate_N100Type">
+		<complexContent>
+			<extension base="gml:AbstractFeatureType">
+				<sequence>
+					<element name="gatefunksjon" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="Gate_N100PropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Gate_N100"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<simpleType name="KomponentkodesystemType">
+		<annotation>
+			<documentation>Inger: Tenkt som en enkel mulighet for &amp;#229; finne mer informasjon. 
+
+IH: komponentreferanse er tenkt &amp;#229; henvise til ytterligere informasjon om en komponent, gitt i kodeliste Komponentreferanse. Komponentreferanse henviser videre til Komponentkodesystem, odesystemversjon og Komponentkodeverdi.
+Dette kan eksempelvis v&amp;#230;re Komponentkodesystem R761, Prosesskoden til Statens vegvesen, med videre angivelse av versjon og prosesskode for komponenten.
+
+Komponentkodesystem som er aktuelle for vegkropp kan v&amp;#230;re R761, NS3420, EPD (enviroment Product Declaration). eller GTIN, QR-kode, RFID eller NSXXX</documentation>
+		</annotation>
+		<union memberTypes="infraN:KomponentkodesystemEnumerationType infraN:KomponentkodesystemOtherType"/>
+	</simpleType>
+	<simpleType name="KomponentkodesystemEnumerationType">
+		<annotation>
+			<documentation>Inger: Tenkt som en enkel mulighet for &amp;#229; finne mer informasjon. 
+
+IH: komponentreferanse er tenkt &amp;#229; henvise til ytterligere informasjon om en komponent, gitt i kodeliste Komponentreferanse. Komponentreferanse henviser videre til Komponentkodesystem, odesystemversjon og Komponentkodeverdi.
+Dette kan eksempelvis v&amp;#230;re Komponentkodesystem R761, Prosesskoden til Statens vegvesen, med videre angivelse av versjon og prosesskode for komponenten.
+
+Komponentkodesystem som er aktuelle for vegkropp kan v&amp;#230;re R761, NS3420, EPD (enviroment Product Declaration). eller GTIN, QR-kode, RFID eller NSXXX</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="HBR761Prosesskode">
+				<annotation>
+					<documentation>IH Se &lt;a href="https://www.vegvesen.no/_attachment/61418/binary/1077236?fast_title=Tidligere+utgave%3A+H%C3%A5ndbok+R761+Prosesskode+1+Standard+beskrivelsestekster+for+vegkontrakter+%282015%29.pdf"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;Hb R761 Prosesskode1&lt;/u&gt;&lt;/font&gt;&lt;/a&gt; 
+https://www.vegvesen.no/_attachment/61418/binary/1077236?fast_title=Tidligere+utgave%3A+H%C3%A5ndbok+R761+Prosesskode+1+Standard+beskrivelsestekster+for+vegkontrakter+%282015%29.pdf
+
+Her er versjonen betegnet slik: November 2015
+Her er komponentkodeverdiene betegnet slik: 
+52 Filterlag og spesielle frostsikringslag 
+52.1 Filterlag,  
+52.11 Filterlag av sand og grus
+52.13 Filterlag av knuste eller sorterte grusmaterialer
+
+Kanskje b&amp;#248;r LINK til riktig prosess (URL) v&amp;#230;re med?</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="V770-objektkode">
+				<annotation>
+					<documentation>Inger: Sp&amp;#248;r Thor Sigurd om denne b&amp;#248;r v&amp;#248;re med. JEG tror ikke det.</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="NVDB-ident">
+				<annotation>
+					<documentation>Inger: B&amp;#248;r NVDB-iden tas med? Vil det forenkle eller forvanske informasjonsflyt til NVDB? I s&amp;#229; fall finnes det kanskje ei kodeliste???</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="EPD-ID">
+				<annotation>
+					<documentation>Inger: 
+Link (URL) til EPD Norge (eller annen EPD) for oppslag av EPD for aktuell byggevare.
+Eksempel: EPD ID: &lt;a href="https://www.epd-norge.no/asfalt-og-pukk/pukk-produsert-ved-rudshogda-pukkverk-ringsaker-article2465-326.html"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;NEPD-2066-934&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="NS3420">
+				<annotation>
+					<documentation>NS3420-kode angis tilsvarende denne, som NS-kode med link/URL.: 
+&lt;a href="https://www.standard.no/no/Nettbutikk/produktkatalogen/Produktpresentasjon/?ProductID=443209"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;NS-EN 12697-42:2005&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="GTIN">
+				<annotation>
+					<documentation>http://www.gs1.no/gtin</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="BIM">
+				<annotation>
+					<documentation>Inger: "Ingen" vet vel hva dette kan v&amp;#230;re? 
+Kan det v&amp;#230;re link til ei IFC-fil eller DWG-fil?</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="KomponentkodesystemOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<element name="Komponentreferanse" type="infraN:KomponentreferanseType" substitutionGroup="gml:AbstractObject"/>
+	<complexType name="KomponentreferanseType">
+		<sequence>
+			<element name="komponentkodesystem" type="infraN:KomponentkodesystemType"/>
+			<element name="kodesystemversjon" type="string"/>
+			<element name="komponentkodeverdi" type="string"/>
+		</sequence>
+	</complexType>
+	<complexType name="KomponentreferansePropertyType">
+		<sequence>
+			<element ref="infraN:Komponentreferanse"/>
+		</sequence>
+	</complexType>
+	<simpleType name="MaxOverhøydeProsent_2019Type">
+		<union memberTypes="infraN:MaxOverhøydeProsent_2019EnumerationType infraN:MaxOverhøydeProsent_2019OtherType"/>
+	</simpleType>
+	<simpleType name="MaxOverhøydeProsent_2019EnumerationType">
+		<restriction base="string">
+			<enumeration value="8"/>
+			<enumeration value="5"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="MaxOverhøydeProsent_2019OtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<element name="NVBD_Vegkropp" type="infraN:NVBD_VegkroppType" substitutionGroup="infraN:VegElement"/>
+	<complexType name="NVBD_VegkroppType">
+		<complexContent>
+			<extension base="infraN:VegElementType">
+				<sequence/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="NVBD_VegkroppPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:NVBD_Vegkropp"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="NVDB_Overbygning" type="infraN:NVDB_OverbygningType" substitutionGroup="gml:AbstractFeature"/>
+	<complexType name="NVDB_OverbygningType">
+		<complexContent>
+			<extension base="gml:AbstractFeatureType">
+				<sequence>
+					<element name="harVegdekke" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="nvdb:Vegdekke"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harBærelag" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="nvdb:Bærelag"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harForsterkingslag" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="nvdb:Forsterkningslag"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harFrostsikringslag" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="nvdb:Frostsikringslag"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harFilterlag" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="nvdb:Filterlag"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harFiberduk" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="nvdb:Fiberduk"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="NVDB_OverbygningPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:NVDB_Overbygning"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Overbygning" type="infraN:OverbygningType" substitutionGroup="infraN:VegkroppElement">
+		<annotation>
+			<documentation>Hb N200 (2018) Kap 3 Ordforklaringer: 
+
+overbygning
+Den del av vegkroppen som er over traubunn/planum. 
+Overbygningen kan best&amp;#229; av frostsikringslag, filterlag (ev. fiberduk), forsterkningslag, b&amp;#230;relag og dekke (bindlag og slitelag).
+
+--------------------------------
+Def VIPS: Vegkroppen over traubunn/planum
+
+Se VIPS side 1.80 / Kap 1.1.5</documentation>
+		</annotation>
+	</element>
+	<complexType name="OverbygningType">
+		<complexContent>
+			<extension base="infraN:VegkroppElementType">
+				<sequence>
+					<element name="lagtype" type="infraN:OverbygningLagtypeType"/>
+					<element name="lagnummer" type="integer">
+						<annotation>
+							<documentation>Lagene nummereres fra toppen, dvs ofte  VegdekkeSlitelag som nr 1</documentation>
+						</annotation>
+					</element>
+					<element name="tykkelse" type="double" minOccurs="0">
+						<annotation>
+							<documentation>tykkelse p&amp;#229; laget, enhet meter</documentation>
+						</annotation>
+					</element>
+					<element name="tilhørerProsjekt" type="infraN:ProsjektreferansePropertyType" minOccurs="0"/>
+					<element name="tilhørerVegdesignElement" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:VegdesignElement"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="OverbygningPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Overbygning"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<simpleType name="OverbygningLagtypeType">
+		<annotation>
+			<documentation>Lag i vegoppbygningenmed volum i overbygning
+
+KIlde: N200 2018-versjon / Vegbygging / Kap 51 Dimensjoneringsgrunnlag
+
+&lt;a href="https://www.vegvesen.no/_attachment/2364236/binary/1269980?fast_title=H%C3%A5ndbok+N200+Vegbygging+%2810+MB%29.pdf"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://www.vegvesen.no/_attachment/2364236/binary/1269980?fast_title=H%C3%A5ndbok+N200+Vegbygging+%2810+MB%29.pdf&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+		</annotation>
+		<union memberTypes="infraN:OverbygningLagtypeEnumerationType infraN:OverbygningLagtypeOtherType"/>
+	</simpleType>
+	<simpleType name="OverbygningLagtypeEnumerationType">
+		<annotation>
+			<documentation>Lag i vegoppbygningenmed volum i overbygning
+
+KIlde: N200 2018-versjon / Vegbygging / Kap 51 Dimensjoneringsgrunnlag
+
+&lt;a href="https://www.vegvesen.no/_attachment/2364236/binary/1269980?fast_title=H%C3%A5ndbok+N200+Vegbygging+%2810+MB%29.pdf"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://www.vegvesen.no/_attachment/2364236/binary/1269980?fast_title=H%C3%A5ndbok+N200+Vegbygging+%2810+MB%29.pdf&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="slitelag"/>
+			<enumeration value="bindelag"/>
+			<enumeration value="bærelagØvre"/>
+			<enumeration value="bærelagNedre"/>
+			<enumeration value="forsterkningslag"/>
+			<enumeration value="frostsikringslag"/>
+			<enumeration value="filterlag"/>
+			<enumeration value="fiberduk">
+				<annotation>
+					<documentation>Kan være fiberduk</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="OverbygningLagtypeOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<element name="Overbygningselement_for_Vegdesign" type="infraN:Overbygningselement_for_VegdesignType" substitutionGroup="gml:AbstractFeature"/>
+	<complexType name="Overbygningselement_for_VegdesignType">
+		<complexContent>
+			<extension base="gml:AbstractFeatureType">
+				<sequence>
+					<element name="name" type="string"/>
+					<element name="lagtype" type="infraN:OverbygningLagtypeType"/>
+					<element name="lagnummer" type="integer"/>
+					<element name="tykkelse" type="double" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="Overbygningselement_for_VegdesignPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Overbygningselement_for_Vegdesign"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Planum" type="infraN:PlanumType" substitutionGroup="infraN:VegkroppElement">
+		<annotation>
+			<documentation>Hb N200 (2018) Kap 3 Ordforklaringer: 
+
+planum: Overflaten av underebygningen. Kalles ogs&amp;#229; traubunn.
+
+-----------------------------
+Traubunn som graves ut ved bygging av veg</documentation>
+		</annotation>
+	</element>
+	<complexType name="PlanumType">
+		<complexContent>
+			<extension base="infraN:VegkroppElementType">
+				<sequence>
+					<element name="høyreSide" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:YtreDelflatekant"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="venstreSide" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:YtreDelflatekant"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="PlanumPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Planum"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Prosjektreferanse" type="infraN:ProsjektreferanseType" substitutionGroup="gml:AbstractFeature">
+		<annotation>
+			<documentation>Referanse til prosjektinformasjon</documentation>
+		</annotation>
+	</element>
+	<complexType name="ProsjektreferanseType">
+		<complexContent>
+			<extension base="gml:AbstractFeatureType">
+				<sequence>
+					<element name="oppdragsgiverNavn" type="string"/>
+					<element name="oppdragsgiversOrganisasjonsnummer" type="string" minOccurs="0"/>
+					<element name="prosjektnavn" type="string">
+						<annotation>
+							<documentation>Oppdragsgivers prosjektnavn</documentation>
+						</annotation>
+					</element>
+					<element name="prosjektID" type="string">
+						<annotation>
+							<documentation>Oppdragsgivers prosjektID</documentation>
+						</annotation>
+					</element>
+					<element name="prosjektfase" type="string" minOccurs="0">
+						<annotation>
+							<documentation>Prosjektfase i henhold til faser definert for prosjektet</documentation>
+						</annotation>
+					</element>
+					<element name="fasestatus" type="string" minOccurs="0">
+						<annotation>
+							<documentation>Status på dataleveransen i forhold til fasen. 
+Fasebetegnelsen som brukes må finnes i oppdragsgivers liste over definerte faser for prosjektet.</documentation>
+						</annotation>
+					</element>
+					<element name="levertAvOrganisasjon" type="string">
+						<annotation>
+							<documentation>navn på organisasjon/firma som er ansvarlig for leveransen</documentation>
+						</annotation>
+					</element>
+					<element name="utarbeidetAv" type="string">
+						<annotation>
+							<documentation>Navn på kontaktperson hos den som har utarbeidet datasettet</documentation>
+						</annotation>
+					</element>
+					<element name="prosjektURL" type="string" minOccurs="0">
+						<annotation>
+							<documentation>URL til prosjektdatabasen det mer informasjon om prosjektet kan finnes.
+
+Merknad: Det antas at prosjektdatabasen også kan inneholde informasjon om andre prosjekt, og at noen av de andre egenskapene på dette objektet må brukes for å søke fram det rette prosjektet og del/fase av prosjektet.</documentation>
+						</annotation>
+					</element>
+					<element name="leveransedato" type="date">
+						<annotation>
+							<documentation>Dato for leveransen. Bør entydig identifisere leveranse, dvs to leveranser til samme prosjekt/fase/status kan ikke ha samme leveransedato</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ProsjektreferansePropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Prosjektreferanse"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="ReferanseLinje_norskeTillegg" type="infraN:ReferanseLinje_norskeTilleggType" substitutionGroup="gml:AbstractObject"/>
+	<complexType name="ReferanseLinje_norskeTilleggType">
+		<sequence>
+			<element name="tilhørerProsjekt" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="gml:AbstractFeatureMemberType">
+							<sequence minOccurs="0">
+								<element ref="infraN:Prosjektreferanse"/>
+							</sequence>
+							<attributeGroup ref="gml:AssociationAttributeGroup"/>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ReferanseLinje_norskeTilleggPropertyType">
+		<sequence>
+			<element ref="infraN:ReferanseLinje_norskeTillegg"/>
+		</sequence>
+	</complexType>
+	<element name="Sideanlegg" type="infraN:SideanleggType" substitutionGroup="gml:AbstractFeature">
+		<annotation>
+			<documentation>N100 D.8: Sideanleggene anlegges for &amp;#229; ivareta trafikantenes behov for stopp, rast og hvile. Politiet, Statens vegvesen eller andre myndigheter kan dessuten bruke sideanleggene til kontroll av trafikanter og kj&amp;#248;ret&amp;#248;y.</documentation>
+		</annotation>
+	</element>
+	<complexType name="SideanleggType">
+		<complexContent>
+			<extension base="gml:AbstractFeatureType">
+				<sequence/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="SideanleggPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Sideanlegg"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Sideterreng" type="infraN:SideterrengType" substitutionGroup="gml:AbstractFeature">
+		<annotation>
+			<documentation>Areal langs vei utenfor skj&amp;#230;ringsfot og fyllingstopp
+
+N200/2019</documentation>
+		</annotation>
+	</element>
+	<complexType name="SideterrengType">
+		<complexContent>
+			<extension base="gml:AbstractFeatureType">
+				<sequence>
+					<element name="sideterrengtype">
+						<annotation>
+							<documentation>Definisjon: 
+Areal langs veg utenfor fyllingsfot og skj&amp;#230;ringstopp
+
+Kilde: HB N200</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="SideterrengPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Sideterreng"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Slitelag" type="infraN:SlitelagType" substitutionGroup="infraN:Vegdekke">
+		<annotation>
+			<documentation>Hb N200 (2018) Kap 3 Ordforklaringer: 
+slitelag
+Det &amp;#248;verste laget i et &lt;i&gt;vegdekke&lt;/i&gt;. Settes sammen / beregnes for &amp;#229; kunne oppta trafikk- og klimap&amp;#229;kjenninger.</documentation>
+		</annotation>
+	</element>
+	<complexType name="SlitelagType">
+		<complexContent>
+			<extension base="infraN:VegdekkeType">
+				<sequence/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="SlitelagPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Slitelag"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<simpleType name="StandardklasseVegstandard_2019Type">
+		<annotation>
+			<documentation>Kilde: N100
+
+Definisjon: 
+
+Dimensjoneringsklasser for nasjonale hovedveger 
+- H1 Nasjonal hovedveg, &amp;#197;DT &lt; 6000, fartsgrense 80 km/t
+- H5 Nasjonal hovedveg, &amp;#197;DT 6000 -12000, fartsgrense 90 km/t
+- H3 Nasjonal hovedveg, &amp;#197;DT &gt; 12000, fartsgrense 110 km/t
+
+Dimensjoneringsklasser for &amp;#248;vrige hovedveger og andre veger
+- H&amp;#248;1- &amp;#216;vrige hovedveger, &amp;#197;DT &lt; 4000, fartsgrense 80 km/t
+- H&amp;#248;2 - &amp;#216;vrige hovedveger, &amp;#197;DT &lt; 120000, fartsgrense 60 km/t
+
+Dimensjoneringsklasser for lokale veger
+- L1 Lokale veger, &amp;#197;DT &lt; 1500, fartsgrense 60 km/t eller 80 km/t
+- L2 &amp;#216;vrige lokale veger,  &amp;#197;DT &lt; 300, lav fartsgrense</documentation>
+		</annotation>
+		<union memberTypes="infraN:StandardklasseVegstandard_2019EnumerationType infraN:StandardklasseVegstandard_2019OtherType"/>
+	</simpleType>
+	<simpleType name="StandardklasseVegstandard_2019EnumerationType">
+		<annotation>
+			<documentation>Kilde: N100
+
+Definisjon: 
+
+Dimensjoneringsklasser for nasjonale hovedveger 
+- H1 Nasjonal hovedveg, &amp;#197;DT &lt; 6000, fartsgrense 80 km/t
+- H5 Nasjonal hovedveg, &amp;#197;DT 6000 -12000, fartsgrense 90 km/t
+- H3 Nasjonal hovedveg, &amp;#197;DT &gt; 12000, fartsgrense 110 km/t
+
+Dimensjoneringsklasser for &amp;#248;vrige hovedveger og andre veger
+- H&amp;#248;1- &amp;#216;vrige hovedveger, &amp;#197;DT &lt; 4000, fartsgrense 80 km/t
+- H&amp;#248;2 - &amp;#216;vrige hovedveger, &amp;#197;DT &lt; 120000, fartsgrense 60 km/t
+
+Dimensjoneringsklasser for lokale veger
+- L1 Lokale veger, &amp;#197;DT &lt; 1500, fartsgrense 60 km/t eller 80 km/t
+- L2 &amp;#216;vrige lokale veger,  &amp;#197;DT &lt; 300, lav fartsgrense</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="H1">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/A"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/A&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+H1 Nasjonal hovedveg, &amp;#197;DT &lt; 6000, fartsgrense 80 km/t</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="H3">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/A"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/A&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+H3 Nasjonal hovedveg, &amp;#197;DT &gt; 12000, fartsgrense 110 km/t</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="H5">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/A"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/A&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+H5 Nasjonal hovedveg, &amp;#197;DT 6000 -12000, fartsgrense 90 km/t</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Hø1">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/A"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/A&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+H&amp;#248;1- &amp;#216;vrige hovedveger, &amp;#197;DT &lt; 4000, fartsgrense 80 km/t</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Hø2">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/A"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/A&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+H&amp;#248;2 - &amp;#216;vrige hovedveger, &amp;#197;DT &lt; 120000, fartsgrense 60 km/t</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="L1">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/A"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/A&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+L1 Lokale veger, &amp;#197;DT &lt; 1500, fartsgrense 60 km/t eller 80 km/t</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="L2">
+				<annotation>
+					<documentation>Kilde: N100
+&lt;a href="https://svv.netlify.com/N100/A"&gt;&lt;font color="#0000ff"&gt;&lt;u&gt;https://svv.netlify.com/N100/A&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+
+L2 &amp;#216;vrige lokale veger,  &amp;#197;DT &lt; 300, lav fartsgrense</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="StandardklasseVegstandard_2019OtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<element name="ToppOverflate" type="infraN:ToppOverflateType" substitutionGroup="infraN:SpatialRepresentationN">
+		<annotation>
+			<documentation>Topp-overflata p&amp;#229; vegkroppelementet.
+Bunnflata p&amp;#229; vegkroppelementet antas sammenfallende med ToppOveflate p&amp;#229; vegkroppelementet under.</documentation>
+		</annotation>
+	</element>
+	<complexType name="ToppOverflateType">
+		<complexContent>
+			<extension base="infraN:SpatialRepresentationNType">
+				<sequence>
+					<element name="geometry">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<choice maxOccurs="1">
+										<element ref="lifr:Surface"/>
+										<element ref="li:PolyfaceMesh"/>
+									</choice>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+									<!-- 
+									<sequence minOccurs="0">
+										<element ref="infraN:Surface"/>
+									</sequence> -->
+
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="ytreDelflatekant" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:YtreDelflatekant"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ToppOverflatePropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:ToppOverflate"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Underbygning" type="infraN:UnderbygningType" substitutionGroup="infraN:VegkroppElement">
+		<annotation>
+			<documentation>Hb N200 (2018) Kap 3 Ordforklaringer: 
+
+Underbygning: En fellesbetegnelse for undergrunn, forbedret og fylling opp til planum.
+
+Def VIPS: Vegkroppen over traubunn/planum
+
+Se VIPS side 1.80 / Kap 1.1.5</documentation>
+		</annotation>
+	</element>
+	<complexType name="UnderbygningType">
+		<complexContent>
+			<extension base="infraN:VegkroppElementType">
+				<sequence>
+					<element name="lagtype" type="infraN:UnderbygningLagtypeType"/>
+					<element name="lagnummer" type="integer">
+						<annotation>
+							<documentation>lagnummer, nummerert i stigende rekkef&amp;#248;lge fra planum = 0  og nedover.</documentation>
+						</annotation>
+					</element>
+					<element name="tykkelse" type="double" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="UnderbygningPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Underbygning"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<simpleType name="UnderbygningLagtypeType">
+		<annotation>
+			<documentation>Kilde N200 / 2018 / Kap 512 Undergrunn</documentation>
+		</annotation>
+		<union memberTypes="infraN:UnderbygningLagtypeEnumerationType infraN:UnderbygningLagtypeOtherType"/>
+	</simpleType>
+	<simpleType name="UnderbygningLagtypeEnumerationType">
+		<annotation>
+			<documentation>Kilde N200 / 2018 / Kap 512 Undergrunn</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Undergrunn"/>
+			<enumeration value="UndergrunnForbedret"/>
+			<enumeration value="Fylling"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UnderbygningLagtypeOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<element name="VegElement_norskeTillegg" type="infraN:VegElement_norskeTilleggType" substitutionGroup="gml:AbstractObject"/>
+	<complexType name="VegElement_norskeTilleggType">
+		<sequence>
+			<element name="tilhørerProsjekt" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="gml:AbstractFeatureMemberType">
+							<sequence minOccurs="0">
+								<element ref="infraN:Prosjektreferanse"/>
+							</sequence>
+							<attributeGroup ref="gml:AssociationAttributeGroup"/>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="komponentreferanse" type="infraN:KomponentreferansePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType name="VegElement_norskeTilleggPropertyType">
+		<sequence>
+			<element ref="infraN:VegElement_norskeTillegg"/>
+		</sequence>
+	</complexType>
+	<element name="Veg_norskeTillegg" type="infraN:Veg_norskeTilleggType" substitutionGroup="gml:AbstractObject"/>
+	<complexType name="Veg_norskeTilleggType">
+		<sequence>
+			<element name="komponentReferanse" type="infraN:KomponentreferansePropertyType" minOccurs="0"/>
+			<element name="dimensjonerendeParametre" type="infraN:DimensjonerendeParametere_VegPropertyType" minOccurs="0"/>
+			<element name="totalOverbygningstykkelse" type="double" minOccurs="0"/>
+			<element name="tilhørerProsjekt" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="gml:AbstractFeatureMemberType">
+							<sequence minOccurs="0">
+								<element ref="infraN:Prosjektreferanse"/>
+							</sequence>
+							<attributeGroup ref="gml:AssociationAttributeGroup"/>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="Veg_norskeTilleggPropertyType">
+		<sequence>
+			<element ref="infraN:Veg_norskeTillegg"/>
+		</sequence>
+	</complexType>
+	<element name="Vegdekke" type="infraN:VegdekkeType" abstract="true" substitutionGroup="infraN:Overbygning">
+		<annotation>
+			<documentation>Hb N200 (2018) Kap 3 Ordforklaringer: vegdekke
+Den &amp;#248;verste del av &lt;i&gt;overbygningen&lt;/i&gt;. Best&amp;#229;r vanligvis av et &lt;i&gt;slitelag&lt;/i&gt; og et &lt;i&gt;bindlag&lt;/i&gt;.</documentation>
+		</annotation>
+	</element>
+	<complexType name="VegdekkeType" abstract="true">
+		<complexContent>
+			<extension base="infraN:OverbygningType">
+				<sequence/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegdekkePropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Vegdekke"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Vegdesign" type="infraN:VegdesignType" substitutionGroup="infraN:Vegelementsamling">
+		<annotation>
+			<documentation>Tverrprofil for bruk i leveranser etter SOSI Vegkropp-modell</documentation>
+		</annotation>
+	</element>
+	<complexType name="VegdesignType">
+		<complexContent>
+			<extension base="infraN:VegelementsamlingType">
+				<sequence>
+					<element name="fraProfil" type="double" minOccurs="0"/>
+					<element name="tilProfil" type="double" minOccurs="0"/>
+					<element name="baserttPåReferanselinje" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="li:LinearElement"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harVegdesignElement" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:VegdesignElement"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegdesignPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Vegdesign"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="VegdesignElement" type="infraN:VegdesignElementType" substitutionGroup="infraN:VegElement"/>
+	<complexType name="VegdesignElementType">
+		<complexContent>
+			<extension base="infraN:VegElementType">
+				<sequence>
+					<element name="flaterekkefølge" type="integer">
+						<annotation>
+							<documentation>Rekkef&amp;#248;lgen p&amp;#229; flaten, regnet ut fra senterlinja. 
+NB! Kun positivt tall, skille p&amp;#229; h&amp;#248;yre og venstre side gj&amp;#248;res med egen attributt vegside.
+IH: Rekkef&amp;#248;lgen p&amp;#229; flaten, regnet ut fra senterlinja. 
+NB! Kun positivt tall, skille p&amp;#229; h&amp;#248;yre og venstre side gj&amp;#248;res med egen attributt vegside. Rekkef&amp;#248;lgen skalbrukes for &amp;#229; koble sammen flatene i stigende nummer-rekkef&amp;#248;lge fra innerst til ytterst p&amp;#229; hver side</documentation>
+						</annotation>
+					</element>
+					<element name="vegside" type="li:SideType"/>
+					<element name="flatetype" type="infraN:VegdesignElementTypePropertyType"/>
+					<element name="bredde" type="infraN:BreddeHellingPropertyType"/>
+					<element name="helling" type="infraN:BreddeHellingPropertyType"/>
+					<element name="tilhørerProsjekt" type="infraN:ProsjektreferansePropertyType" minOccurs="0"/>
+					<element name="harOverbygning" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:Overbygningselement_for_Vegdesign"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="overflate" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:ToppOverflate"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="ytterkant" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:YtreDelflatekant"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harPlanum" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:Planum"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harUnderbygning" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:Underbygning"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegdesignElementPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:VegdesignElement"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="VegdesignElementType" type="infraN:VegdesignElementTypeType" substitutionGroup="gml:AbstractObject"/>
+	<complexType name="VegdesignElementTypeType">
+		<choice>
+			<element name="gateKjørebane" type="infraN:Vegdesign_Gate_KjørebaneType"/>
+			<element name="gateTilleggselement" type="infraN:Vegdesign_Gate_TilleggselementType"/>
+			<element name="gateSyklendeGående" type="infraN:Vegdesign_Gate_LøsningForSyklendeOgGåendeType"/>
+			<element name="gateFortauSone" type="infraN:Vegdesign_Gatefunksjon_FortaussoneType"/>
+			<element name="gateKantstein" type="infraN:Vegdesign_Gatefunksjon_KantsteinType"/>
+			<element name="vegKjørebane" type="infraN:Vegdesign_Veg_KjørebaneType"/>
+			<element name="vegSyklendeGående" type="infraN:Vegdesign_Veg_LøsningForSyklendeOgGåendeType"/>
+			<element name="vegTilleggselement" type="gml:CodeType"/>
+			<element name="rekkverkSideområde_GrøftÅpen" type="infraN:Vegdesign_RekkverkOgVegensSideområde_GrøftÅpenType"/>
+			<element name="rekkverkSideområde_GrøftLukket" type="infraN:Vegdesign_RekkverkOgVegensSideområde_GrøftLukketType"/>
+			<element name="rekkverkSideområde_Voll" type="infraN:Vegdesign_RekkverkOgVegensSideområde_VollType"/>
+			<element name="rekkverkSideområde_Trafikkdeler" type="infraN:Vegdesign_RekkverkOgVegensSideområde_TrafikkdelerType"/>
+			<element name="rekkverkSideområde_Mur" type="infraN:Vegdesign_RekkverkOgvegensSideområde_MurType"/>
+			<element name="rekkverkSideområde_Sideterreng" type="infraN:Vegdesign_RekkverkOgVegensSideområde_SideterrengType"/>
+			<element name="fyllingSkjæring" type="infraN:Vegdesign_FyllingSkjæringType"/>
+			<element name="skilleMellomKjøreretninger" type="infraN:Vegdesign_SkilleMellomKjøreretningerType"/>
+			<element name="sideanlegg" type="infraN:Vegdesign_SideanleggType"/>
+			<element name="annenType" type="string">
+				<annotation>
+					<documentation>Navn p&amp;#229; typen angis med attributt "name"</documentation>
+				</annotation>
+			</element>
+		</choice>
+	</complexType>
+	<complexType name="VegdesignElementTypePropertyType">
+		<sequence>
+			<element ref="infraN:VegdesignElementType"/>
+		</sequence>
+	</complexType>
+	<simpleType name="Vegdesign_FyllingSkjæringType">
+		<annotation>
+			<documentation>Typer vegdesignelementer etter Vegvesenh&amp;#229;ndbok om Sideterreng.</documentation>
+		</annotation>
+		<union memberTypes="infraN:Vegdesign_FyllingSkjæringEnumerationType infraN:Vegdesign_FyllingSkjæringOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_FyllingSkjæringEnumerationType">
+		<annotation>
+			<documentation>Typer vegdesignelementer etter Vegvesenh&amp;#229;ndbok om Sideterreng.</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="vegfylling">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "Vegfylling"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="vegskjæring_Bergskjæring">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "Bergskj&amp;#230;ring"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="vegskjæring_Jordskjæring">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "Jordskj&amp;#230;ring"</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_FyllingSkjæringOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_KjørebaneType">
+		<annotation>
+			<documentation>Alle koder knyttes til Nettfunksjon (Elin)</documentation>
+		</annotation>
+		<union memberTypes="infraN:Vegdesign_Gate_KjørebaneEnumerationType infraN:Vegdesign_Gate_KjørebaneOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_KjørebaneEnumerationType">
+		<annotation>
+			<documentation>Alle koder knyttes til Nettfunksjon (Elin)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="kollektivfelt">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "Midtlinje"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="kjørefeltForBil">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "Midtrekkverk"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="busskantstopp"/>
+			<enumeration value="sykkelfelt">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "Skulderytre"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="sykkelboks"/>
+			<enumeration value="gangOgSykkelveg"/>
+			<enumeration value="sykkelveg"/>
+			<enumeration value="parkeringForBil"/>
+			<enumeration value="tungtrafikkfelt"/>
+			<enumeration value="sambruksfelt"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_KjørebaneOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_LøsningForSyklendeOgGåendeType">
+		<annotation>
+			<documentation>Alle koder knyttes til Nettfunksjon (Elin)</documentation>
+		</annotation>
+		<union memberTypes="infraN:Vegdesign_Gate_LøsningForSyklendeOgGåendeEnumerationType infraN:Vegdesign_Gate_LøsningForSyklendeOgGåendeOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_LøsningForSyklendeOgGåendeEnumerationType">
+		<annotation>
+			<documentation>Alle koder knyttes til Nettfunksjon (Elin)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="fortau"/>
+			<enumeration value="gangOgSykkelveg"/>
+			<enumeration value="parkeringForSykkel"/>
+			<enumeration value="sykkelboks"/>
+			<enumeration value="sykkelfelt">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "Skulderytre"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="sykkelveg"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_LøsningForSyklendeOgGåendeOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_TilleggselementType">
+		<annotation>
+			<documentation>Alle koder knyttes til Nettfunksjon (Elin)</documentation>
+		</annotation>
+		<union memberTypes="infraN:Vegdesign_Gate_TilleggselementEnumerationType infraN:Vegdesign_Gate_TilleggselementOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_TilleggselementEnumerationType">
+		<annotation>
+			<documentation>Alle koder knyttes til Nettfunksjon (Elin)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="bussholdeplass"/>
+			<enumeration value="parkeringForBil"/>
+			<enumeration value="parkeringForSykkel"/>
+			<enumeration value="skulder"/>
+			<enumeration value="varelevering"/>
+			<enumeration value="stopplomme"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gate_TilleggselementOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gatefunksjon_FortaussoneType">
+		<union memberTypes="infraN:Vegdesign_Gatefunksjon_FortaussoneEnumerationType infraN:Vegdesign_Gatefunksjon_FortaussoneOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_Gatefunksjon_FortaussoneEnumerationType">
+		<restriction base="string">
+			<enumeration value="ferdselssone"/>
+			<enumeration value="møbleringssone"/>
+			<enumeration value="veggsone"/>
+			<enumeration value="venteareal"/>
+			<enumeration value="kantsteinssone"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gatefunksjon_FortaussoneOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gatefunksjon_KantsteinType">
+		<union memberTypes="infraN:Vegdesign_Gatefunksjon_KantsteinEnumerationType infraN:Vegdesign_Gatefunksjon_KantsteinOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_Gatefunksjon_KantsteinEnumerationType">
+		<restriction base="string">
+			<enumeration value="kantsteinAvvisendeOverflate"/>
+			<enumeration value="ferdselssone"/>
+			<enumeration value="kantsteinNedsenketOverflate"/>
+			<enumeration value="kantsteinOppkant-Visflate"/>
+			<enumeration value="bankettOverflate"/>
+			<enumeration value="kantsteinIkkeAvvisendeOverflate"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Gatefunksjon_KantsteinOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_GrøftLukketType">
+		<union memberTypes="infraN:Vegdesign_RekkverkOgVegensSideområde_GrøftLukketEnumerationType infraN:Vegdesign_RekkverkOgVegensSideområde_GrøftLukketOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_GrøftLukketEnumerationType">
+		<restriction base="string">
+			<enumeration value="dreneringLukketOverflate"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_GrøftLukketOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_GrøftÅpenType">
+		<union memberTypes="infraN:Vegdesign_RekkverkOgVegensSideområde_GrøftÅpenEnumerationType infraN:Vegdesign_RekkverkOgVegensSideområde_GrøftÅpenOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_GrøftÅpenEnumerationType">
+		<restriction base="string">
+			<enumeration value="dreneringÅpen"/>
+			<enumeration value="dreneringÅpen_Sidegrøft"/>
+			<enumeration value="dreneringÅpen_Terrenggrøft"/>
+			<enumeration value="fanggrøft"/>
+			<enumeration value="sideområde_grøft"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_GrøftÅpenOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_SideterrengType">
+		<union memberTypes="infraN:Vegdesign_RekkverkOgVegensSideområde_SideterrengEnumerationType infraN:Vegdesign_RekkverkOgVegensSideområde_SideterrengOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_SideterrengEnumerationType">
+		<restriction base="string">
+			<enumeration value="bakkeplanering"/>
+			<enumeration value="bekk"/>
+			<enumeration value="dam"/>
+			<enumeration value="fjellhylle"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_SideterrengOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_TrafikkdelerType">
+		<union memberTypes="infraN:Vegdesign_RekkverkOgVegensSideområde_TrafikkdelerEnumerationType infraN:Vegdesign_RekkverkOgVegensSideområde_TrafikkdelerOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_TrafikkdelerEnumerationType">
+		<restriction base="string">
+			<enumeration value="trafikkdelerOmråde"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_TrafikkdelerOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_VollType">
+		<union memberTypes="infraN:Vegdesign_RekkverkOgVegensSideområde_VollEnumerationType infraN:Vegdesign_RekkverkOgVegensSideområde_VollOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_VollEnumerationType">
+		<restriction base="string">
+			<enumeration value="støyvoll"/>
+			<enumeration value="ledevoll"/>
+			<enumeration value="vollSomMidtdeler"/>
+			<enumeration value="fangvoll"/>
+			<enumeration value="voll"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgVegensSideområde_VollOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgvegensSideområde_MurType">
+		<union memberTypes="infraN:Vegdesign_RekkverkOgvegensSideområde_MurEnumerationType infraN:Vegdesign_RekkverkOgvegensSideområde_MurOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgvegensSideområde_MurEnumerationType">
+		<restriction base="string">
+			<enumeration value="skredmur"/>
+			<enumeration value="fangmur"/>
+			<enumeration value="støttemur"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_RekkverkOgvegensSideområde_MurOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_SideanleggType">
+		<union memberTypes="infraN:Vegdesign_SideanleggEnumerationType infraN:Vegdesign_SideanleggOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_SideanleggEnumerationType">
+		<restriction base="string">
+			<enumeration value="godsterminal"/>
+			<enumeration value="kjettingplass"/>
+			<enumeration value="kollektivterminalBussterminal?"/>
+			<enumeration value="kontrollplassVektplass"/>
+			<enumeration value="parkeringsplass_etc"/>
+			<enumeration value="serviceanleggRasteplass"/>
+			<enumeration value="døgnhvileplass"/>
+			<enumeration value="snuplass?_Slettesher?"/>
+			<enumeration value="stopplomme?_Slettesher?"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_SideanleggOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_SkilleMellomKjøreretningerType">
+		<union memberTypes="infraN:Vegdesign_SkilleMellomKjøreretningerEnumerationType infraN:Vegdesign_SkilleMellomKjøreretningerOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_SkilleMellomKjøreretningerEnumerationType">
+		<restriction base="string">
+			<enumeration value="forsterketMidtOppmerking"/>
+			<enumeration value="midtdelerMedMidtrekkverk"/>
+			<enumeration value="trafikkdelerOverflate"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_SkilleMellomKjøreretningerOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Veg_KjørebaneType">
+		<annotation>
+			<documentation>Alle koder knyttes til Vegfunksjon (Elin)</documentation>
+		</annotation>
+		<union memberTypes="infraN:Vegdesign_Veg_KjørebaneEnumerationType infraN:Vegdesign_Veg_KjørebaneOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_Veg_KjørebaneEnumerationType">
+		<annotation>
+			<documentation>Alle koder knyttes til Vegfunksjon (Elin)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="kollektivfelt"/>
+			<enumeration value="sambruksfelt">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "MIdtdelerMedMidtrekkverk_MR"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="kjørefeltForBil">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "Midtrekkverk"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="tungtrafikkfelt">
+				<annotation>
+					<documentation>Realisering av &lt;&lt;featureType&gt;&gt; "SkulderIndre"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="busskantstopp"/>
+			<enumeration value="akselerasjonsfelt"/>
+			<enumeration value="breddeutvidelse"/>
+			<enumeration value="avkjørsel"/>
+			<enumeration value="forbikjøringsfelt"/>
+			<enumeration value="høyresvingefelt"/>
+			<enumeration value="venstresvingefelt"/>
+			<enumeration value="retardasjonsfelt"/>
+			<enumeration value="rampe"/>
+			<enumeration value="kjørefelt"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Veg_KjørebaneOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Veg_LøsningForSyklendeOgGåendeType">
+		<annotation>
+			<documentation>Alle koder knyttes til Vegfunksjon (Elin)</documentation>
+		</annotation>
+		<union memberTypes="infraN:Vegdesign_Veg_LøsningForSyklendeOgGåendeEnumerationType infraN:Vegdesign_Veg_LøsningForSyklendeOgGåendeOtherType"/>
+	</simpleType>
+	<simpleType name="Vegdesign_Veg_LøsningForSyklendeOgGåendeEnumerationType">
+		<annotation>
+			<documentation>Alle koder knyttes til Vegfunksjon (Elin)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="fortau"/>
+			<enumeration value="gangOgSykkelveg"/>
+			<enumeration value="sykkelfelt"/>
+			<enumeration value="sykkelveg"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Vegdesign_Veg_LøsningForSyklendeOgGåendeOtherType">
+		<restriction base="string">
+			<pattern value="other: \w{2,}"/>
+		</restriction>
+	</simpleType>
+	<element name="VegelementSideområder" type="infraN:VegelementSideområderType" substitutionGroup="infraN:VegElement"/>
+	<complexType name="VegelementSideområderType">
+		<complexContent>
+			<extension base="infraN:VegElementType">
+				<sequence/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegelementSideområderPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:VegelementSideområder"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Vegelement_Vegområder" type="infraN:Vegelement_VegområderType" substitutionGroup="infraN:VegElement"/>
+	<complexType name="Vegelement_VegområderType">
+		<complexContent>
+			<extension base="infraN:VegElementType">
+				<sequence/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="Vegelement_VegområderPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Vegelement_Vegområder"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Vegkropp" type="infraN:VegkroppType" substitutionGroup="infraN:Vegelementsamling">
+		<annotation>
+			<documentation>Hb N200 (2018) Kap 3 Ordforklaringer: 
+
+Vegkropp: Vegens overbygning og underbygning</documentation>
+		</annotation>
+	</element>
+	<complexType name="VegkroppType">
+		<complexContent>
+			<extension base="infraN:VegelementsamlingType">
+				<sequence>
+					<element name="fraProfil" type="double" minOccurs="0"/>
+					<element name="tilProfil" type="double" minOccurs="0"/>
+					<element name="basertPåReferanselinje" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="li:LinearElement"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="harVegkroppElement" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractFeatureMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:VegkroppElement"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegkroppPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Vegkropp"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="VegkroppElement" type="infraN:VegkroppElementType" abstract="true" substitutionGroup="infraN:VegElement"/>
+	<complexType name="VegkroppElementType" abstract="true">
+		<complexContent>
+			<extension base="infraN:VegElementType">
+				<sequence>
+					<element name="ytterkant" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:YtreDelflatekant"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="toppOverflate" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:ToppOverflate"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="volum" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:Volumobjekt"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VegkroppElementPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:VegkroppElement"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="Volumobjekt" type="infraN:VolumobjektType" substitutionGroup="infraN:SpatialRepresentationN">
+		<annotation>
+			<documentation>Volum/Solid-geometrien som omslutter vegkroppelementet.</documentation>
+		</annotation>
+	</element>
+	<complexType name="VolumobjektType">
+		<complexContent>
+			<extension base="infraN:SpatialRepresentationNType">
+				<sequence>
+					<element name="geometry">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+								<choice maxOccurs="1">
+										<element ref="gml:Solid"/>
+										<element ref="li:PolyfaceMesh"/>
+									</choice>
+									<!-- <sequence minOccurs="0">
+										<element ref="infraN:Solid"/>
+									</sequence> -->
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="toppOverflate" minOccurs="0">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="infraN:ToppOverflate"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="VolumobjektPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:Volumobjekt"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="YtreDelflatekant" type="infraN:YtreDelflatekantType" substitutionGroup="infraN:SpatialRepresentationN">
+		<annotation>
+			<documentation>EI linje som f&amp;#248;lger ytterkanten (lengst bort fra senter veg) p&amp;#229; flaten som beskrives.
+
+Indre kant antas sammenfallende med ytre kant p&amp;#229; vegkroppelementet innafor.
+
+Antas "underordnet" beregningsm&amp;#229;l basert p&amp;#229; bredde/helling</documentation>
+		</annotation>
+	</element>
+	<complexType name="YtreDelflatekantType">
+		<complexContent>
+			<extension base="infraN:SpatialRepresentationNType">
+				<sequence>
+					<element name="geometry">
+						<complexType>
+							<complexContent>
+								<extension base="gml:AbstractMemberType">
+									<sequence minOccurs="0">
+										<element ref="gml:LineString"/>
+									</sequence>
+									<attributeGroup ref="gml:AssociationAttributeGroup"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="YtreDelflatekantPropertyType">
+		<sequence minOccurs="0">
+			<element ref="infraN:YtreDelflatekant"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+</schema>
