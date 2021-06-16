@@ -1,0 +1,28 @@
+Import VIPS database (.gen fil)
+Version: Np21 Type: Road
+VIPS model version 10.0
+------------------------------------
+
+Leser horisontalkurvatur
+Leser vertikalkurvatur
+  Leser tabell: Overstyring av vertikalkurvatur
+
+
+Leser ekstra linjer
+Leser: Bygg innstillinger
+Leser tabell: Overflate beskrivelser
+Leser tabell: Sideavgrensning
+Leser tabell: Flateavgrensningslinjer
+Leser tabell: Grøft i fylling
+Leser tabell: Fjellhylle
+Leser tabell: Min. grøfte dybde
+Leser tabell: Lukkede grøfter 
+Leser tabell: Min. grøfte dybde
+Leser tabell: Overbygning
+Leser tabell: Avansert overbygning
+Leser tabell: Fjerning av matjord og vegetasjon
+Leser tabell: Masseutskiftning
+
+Leser fysiske profiler
+Leser "Vips diverse" lag, ikke brukt under bygging.
+Leser teoretiske profiler
